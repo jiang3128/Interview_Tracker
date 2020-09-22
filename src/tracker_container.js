@@ -19,14 +19,13 @@ export function SiderRight(){
         </div>
     );
 }
-export function TrackerContainerShortInfo(){
+export function TrackerContainerShortInfo(props){
+    const date = props.date;
     return(
         <div className="Container_Info">
-            <span className="date">13September, 2020</span>
+            <span className="date">{date.day}</span>
             <span className="location">Davies Center</span>
-            <span className="name">Jiang Zhu</span>
+            <span className="name">{date.name}</span>
         </div>
-        
-        
     );
 }

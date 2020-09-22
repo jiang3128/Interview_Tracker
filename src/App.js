@@ -13,7 +13,10 @@ function App() {
       <Header/>
       <SiderLeft/>
       <SiderRight/>
-      <TrackerContainerShortInfo/>
+      <TrackerContainerShortInfo date={{day:"13September,2020",name:"Professor Tan"}}/>
+      <TrackerContainerShortInfo date={{day:"15October,2020",name:"Professor Gurung"}}/>
+      <TrackerContainerShortInfo date={{day:"19November,2020",name:"Professor Rakib"}}/>
+      <TrackerContainerShortInfo date={{day:"19November,2020",name:"Professor Chris"}}/>
     </div>
   );
 }
