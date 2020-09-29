@@ -45,15 +45,15 @@ export function Name() {
 export function Login() {
     return (
         <section>
-            {/* <section class ="row justify-content-center">
+            <section class ="row justify-content-center">
             <img src="interview_tracker.png" alt="Interview_Tracker Image" />
             </section>
             <section class ="row justify-content-center">
             <p class="topic">Smart Faculty Interview Meeting Tracker</p>
-            </section> */}
+            </section>
             <section class="row justify-content-center">
-            <img src="interview_tracker.png" alt="Interview_Tracker Image"/>
-            <p class="topic">Smart Faculty Interview Meeting Tracker</p>
+            {/* <img src="interview_tracker.png" alt="Interview_Tracker Image"/>
+            <p class="topic">Smart Faculty Interview Meeting Tracker</p> */}
                 <form class="form-container">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
