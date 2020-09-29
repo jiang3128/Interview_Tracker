@@ -1,47 +1,47 @@
 .Header_Info{
   width: 90%;
   height: 50px;
-  margin-left: 5%;
+  margin-left: 10%;
   top:0%;
   box-sizing: border-box;
-  text-align: center;
+  text-align: right;
   background-color: darkgray; 
   color: black; 
-  font-size: 20px;
-  position:absolute;
-  padding-top: 1%;
+  font-size: 25px;
+  position:absolute;  
 }
 .Sider_Left{
-  width: 5%;
+  width: 15%;
   height: 100%;
   top:0%;
   Left:0%;
   background-color:lightgray;
   box-sizing: border-box;
   position: absolute;
+  
 }
-.Sider_Right{
-  width: 5%;
-  height: 100%;
-  background-color: lightGray;
-  box-sizing: border-box;
-  Left:95%; 
-  top: 0%;
-  position: absolute;
+.Sider_Left>h3{
+  padding: 20px;
 }
+.Sider_Left>p{
+  font-size: 20px;
+  padding: 20px;
+  padding-top: 5px;
+  background-color: darkgray;
+}
+
 #meeting_tracker_root{
   display: flex;
   flex-direction: row;
   flex-wrap:wrap;
-  justify-content: space-between;
+  
 }
+
 .Container_Info{
-  margin-left: 7%;
-  margin-right: 7%;
-  margin-top:1%;
-  text-align: center;
-  top:50px;
-  width:250px;
+  left: 13%;
+  margin-left: 10%;
+  margin-top:15%;
+  width:200px;
   height: 70px;
   background-color: aqua;
   box-sizing: border-box;
@@ -58,11 +58,25 @@
 }
 .Container_Info >.location{
   position: absolute;
-  right: 20px;
+  right: 40px;
   top:25px;
 }
 .Container_Info >.name{
   position: absolute;
   right: 20px;
   top:40px;
+}
+
+.Name_Info{
+  position: absolute;
+  right:40%;
+  top:10%;
+  font-size: 25px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.Name_Info>.name{
+  margin: 0px;
+}
+.Name_Info>.name_2{
+  margin: 30px;
 }
