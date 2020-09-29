@@ -1,6 +1,6 @@
 import React from 'react';
 import './SideBar.css';
-import logo from './images/logo.jpg'
+import logo from './images/interview_tracker.png'
 
 const candidateButtons=["My Meetings","My Account"];
 export function SideBar(props){

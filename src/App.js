@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 
 import {TrackerContainer} from'./TrackerContainer.js';
-import {SideBar} from './SideBar.js'
+import {SideBar} from './SideBar.js';
+import {Login} from './tracker_container.js';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         <TrackerContainer info={{time:"19 November,2020",location:"Phillips Hall"}}/>
         <TrackerContainer info={{time:"19 November,2020",location:"Centennial Hall"}}/>
       </div>
+      {/* <div>
+        <Login/>
+      </div> */}
     </div>
   );
 }
