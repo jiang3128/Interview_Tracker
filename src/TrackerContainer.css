@@ -1,0 +1,20 @@
+.Container_Info{
+    width:80%;
+    height: 70px;
+    box-sizing: border-box;
+    color: black;
+    border-bottom: darkblue solid 3px;
+    border-left:darkblue solid 1px;
+    font-family:Georgia, "Times New Roman", Times, serif;
+    margin-top: 50px;
+  }
+  .Container_Info:hover{
+      padding-top: 3px;
+      color: gold;
+      cursor: pointer;
+      transition: 0.3s;
+  }
+  p{
+    margin:5px 0px 0px 20px;
+    font-size: 20px;
+  }
