@@ -26,7 +26,7 @@ export function SiderLeft() {
 export function TrackerContainerShortInfo(props) {
     const date = props.date;
     return (
-        <div className="Container_Info">
+        <div className="Container_Info"> 
             {/* <span className="date">{date.day}</span> */}
             {/* <span className="location">Davies Center</span> */}
             <span className="location">{date.name}</span>
