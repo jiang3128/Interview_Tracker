@@ -1,5 +1,5 @@
 .sider{
-    width: 18%;
+    width: 20%;
     height: 100%;
     top:0%;
     Left:0%;
@@ -33,7 +33,6 @@
     height: 70%;
 }
 .buttonBar>div{
-    height:20px;
     line-height: 20px;
     font-size: 20px;
     padding:20px;
