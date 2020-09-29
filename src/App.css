@@ -1,5 +1,5 @@
 #meeting_tracker_root{
-  width: 82%;
+  width: 80%;
   position: fixed;
   right: 0%;
   top:50px;
@@ -23,6 +23,7 @@
 .Header_Info>p{
   line-height: 50px;
   margin: 0 20px;
+  user-select: none;
 }
 
 .Header_Info>p:hover{

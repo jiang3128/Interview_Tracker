@@ -14,9 +14,9 @@ function App() {
       <SideBar type={1}/>
       <div id="main">
         <div id="title">My Meetings</div>
-        <TrackerContainer info={{time:"15October,2020",location:"Davies Center"}}/>
-        <TrackerContainer info={{time:"19November,2020",location:"Phillips Hall"}}/>
-        <TrackerContainer info={{time:"19November,2020",location:"Centennial Hall"}}/>
+        <TrackerContainer info={{time:"15 October,2020",location:"Davies Center"}}/>
+        <TrackerContainer info={{time:"19 November,2020",location:"Phillips Hall"}}/>
+        <TrackerContainer info={{time:"19 November,2020",location:"Centennial Hall"}}/>
       </div>
     </div>
   );
