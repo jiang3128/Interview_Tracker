@@ -80,3 +80,15 @@
 .Name_Info>.name_2{
   margin: 30px;
 }
+
+.form-container{
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px black;
+  position: absolute;
+  top:30%;
+}
+.topic{
+  top:500px;
+}
