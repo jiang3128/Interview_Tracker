@@ -1,11 +1,19 @@
 export const Action=Object.freeze({
-    loadAllMeetings:'loadAllMeetings',
+    loadMeetings:'loadMeetings',
+    loadUser:'loadUser',
 });
 
-function loadAllMeetings(meetings){
+function loadMeetings(meetings){
     return{
-        type:Action.loadAllMeetings,
+        type:Action.loadMeetings,
         payload:meetings,
+    };
+}
+
+function loadUser(user){
+    return{
+        type:Action.loadUser,
+        payload:user,
     };
 }
 
@@ -15,8 +23,30 @@ export function findAllMeetings(){
         fetch(`${host}/getAllMeetings`)
         .then(response=>response.json())
         .then(data=>{
-            dispatch(loadAllMeetings(data));
+            dispatch(loadMeetings(data));
         })
         .catch(error=>console.log(error));
     };
 };
+
+export function findUser(email,password){
+    return dispatch=>{
+        fetch(`${host}/getUser/${email}/${password}`)
+        .then(response=>response.json())
+        .then(data=>{
+            dispatch(loadUser(data));
+        })
+        .catch(error=>console.log(error));
+    };
+};
+
+export function findMeetingsByUserId(id){
+    return dispatch=>{
+        fetch(`${host}/getMeetingsByUserId/${id}`)
+        .then(response=>response.json())
+        .then(data=>{
+            dispatch(loadMeetings(data));
+        })
+        .catch(error=>console.log(error));
+    };
+}
