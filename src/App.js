@@ -1,9 +1,18 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './App.css';
 import {TrackerContainer} from'./TrackerContainer.js';
 import {SideBar} from './SideBar.js';
+import {useDispatch,useSelector} from 'react-redux';
+import {findAllMeetings} from './actions.js';
 
 function App() {
+  const dispatch=useDispatch();
+  const meetings=useSelector(state=>state.meetings);
+
+  useEffect(()=>{
+    dispatch(findAllMeetings());
+  },[dispatch]);
+
   return (
     <div id="meeting_tracker_root">
       <div className="Header_Info">
@@ -13,9 +22,7 @@ function App() {
       <SideBar/>
       <div id="main">
         <div id="title">My Meetings</div>
-        <TrackerContainer info={{time:"15 October,2020",location:"Davies Center"}}/>
-        <TrackerContainer info={{time:"19 November,2020",location:"Phillips Hall"}}/>
-        <TrackerContainer info={{time:"19 November,2020",location:"Centennial Hall"}}/>
+        {meetings.map(meetings=><TrackerContainer key={meetings.mid} info={{time:meetings.startTime,room:meetings.room,location:meetings.location}}/>)}
       </div>
     </div>
   );
