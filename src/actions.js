@@ -18,6 +18,7 @@ function loadUser(user){
 }
 
 const host='http://138.68.20.45:8080';
+
 export function findAllMeetings(){
     return dispatch=>{
         fetch(`${host}/getAllMeetings`)
