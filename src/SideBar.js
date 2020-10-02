@@ -1,10 +1,13 @@
 import React from 'react';
 import './SideBar.css';
-import logo from './images/interview_tracker.png'
+import logo from './images/logo.png'
+import {useSelector} from 'react-redux';
 
-const candidateButtons=["My Meetings","My Account"];
-export function SideBar(props){
-    var userType=props.type;
+const candidateButtons=["My Meetings","My Files","My Account"];
+
+export function SideBar(){
+    const userType=useSelector(state=>state.userType);
+    
     return(
         <div className="sider">
             <div className="logo-container">
@@ -12,7 +15,7 @@ export function SideBar(props){
                     <img src={logo} alt="Logo"/>
                 </div>
             </div>
-            <h1>Smart Faculty Interview Meeting Tracker</h1>
+            <h2>Smart<br/>Faculty Interview Meeting Tracker</h2>
             {button(userType)}
         </div>
     );
