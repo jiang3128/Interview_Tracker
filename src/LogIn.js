@@ -1,5 +1,11 @@
 import React from 'react';
+
 export function Login() {
+    const Submit = (dispatch) =>{
+        return{
+            Submit: dispatch
+        }
+    }
     return (
         <section class ="border rounded">
             <section class ="row justify-content-center position-relative bg-secondary">
@@ -21,7 +27,8 @@ export function Login() {
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" />
                     </div>
-                    <button type="submit" class="btn btn-outline-primary btn-block" href="candidate_view.js">Submit</button>
+                    {/* onclick={() => dispatch({type: 'Submit'} */}
+                    <button type="submit" class="btn btn-outline-primary btn-block" href="index.html">Submit</button>
                 </form>
             </section>
         </section>
