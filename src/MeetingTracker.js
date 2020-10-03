@@ -1,7 +1,7 @@
 import React from 'react';
-import './TrackerContainer.css';
+import './MeetingTracker.css';
 
-export function TrackerContainer(props){
+export function MeetingTracker(props){
     var info = props.info;
     return(
         <div className="Container_Info">

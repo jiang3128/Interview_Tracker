@@ -1,6 +1,7 @@
 export const Action=Object.freeze({
     loadMeetings:'loadMeetings',
     loadUser:'loadUser',
+    showLoginError:'showLoginError',
 });
 
 function loadMeetings(meetings){
@@ -14,6 +15,12 @@ function loadUser(user){
     return{
         type:Action.loadUser,
         payload:user,
+    };
+}
+
+function showLoginError(){
+    return{
+        type:Action.showLoginError,
     };
 }
 
@@ -35,7 +42,12 @@ export function findUser(email,password){
         fetch(`${host}/getUser/${email}/${password}`)
         .then(response=>response.json())
         .then(data=>{
-            dispatch(loadUser(data));
+            if(password===data.upassword){
+                dispatch(loadUser(data));
+            }
+            else{
+                dispatch(showLoginError());
+            }
         })
         .catch(error=>console.log(error));
     };
