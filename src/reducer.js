@@ -19,6 +19,12 @@ function reducer(state=intialState,action){
             return{
                 ...state,
                 user:action.payload,
+                currentPage:1,
+            };
+        case Action.showLoginError:
+            return{
+                ...state,
+                loginError:true,
             };
         default:
             return state;
