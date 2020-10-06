@@ -1,30 +1,36 @@
 import React from 'react';
-import './css/Login.css';
-import {useDispatch,useSelector} from 'react-redux';
-import logo from './images/logo.png';
-import {findUser} from './actions.js';
 
-export function Login(){
-    const dispatch=useDispatch();
-    const loginError=useSelector(state=>state.loginError);
-    return(
-        <div id="login">
-            <div id="login-header">
-                <img src={logo} alt="Logo"/>
-            </div>
-            <p>E-mail:</p>
-            <input id="email" type="text"/>
-            <p>Password:</p>
-            <input id="password" type="password"/>
-            <div id="login-error">{loginError&&error()}</div>
-            <div id="login-button" onClick={login}>Login</div>
-        </div>
-    );
-    function error(){
-        return "Invaild e-mail or password!";
+export function Login() {
+    const Submit = (dispatch) =>{
+        return{
+            Submit: dispatch
+        }
     }
-    
-    function login(){
-        dispatch(findUser(document.getElementById('email').value,document.getElementById('password').value));
-    }
+    return (
+        <section class ="border rounded">
+            <section class ="row justify-content-center position-relative bg-secondary">
+            <img src="interview_tracker.png" alt="Interview_Tracker Image" />
+            </section>
+            <section class ="row justify-content-center bg-warning">
+            <p class="topic">Smart Faculty Interview Meeting Tracker</p>
+            </section>
+            <section class="row justify-content-center bg-warning">
+            {/* <img src="interview_tracker.png" alt="Interview_Tracker Image"/>
+            <p class="topic">Smart Faculty Interview Meeting Tracker</p> */}
+                <form class="form-container">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">User ID</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        <small id="emailHelp" class="form-text text-muted">Enter Your User ID</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" />
+                    </div>
+                    {/* onclick={() => dispatch({type: 'Submit'} */}
+                    <button type="submit" class="btn btn-outline-primary btn-block" href="index.html">Submit</button>
+                </form>
+            </section>
+        </section>
+    )
 }

@@ -2,13 +2,7 @@ import React,{useEffect} from 'react';
 import './css/App.css';
 import {MeetingTracker} from'./MeetingTracker.js';
 import {SideBar} from './SideBar.js';
-<<<<<<< HEAD
-import {CandidateView} from './candidate_view';
-
-import {Login} from './LogIn.js';
-=======
 import {Login} from './Login.js';
->>>>>>> 372946d716d54c1e7093d4a57970e101a3543b6c
 import {useDispatch,useSelector} from 'react-redux';
 import {findAllMeetings} from './actions.js';
 
