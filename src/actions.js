@@ -32,8 +32,8 @@ export function changeView(id){
     };
 }
 
-//const host='http://138.68.20.45:8080';
-const host='http://localhost:8080';
+const host='http://138.68.20.45:8080';
+//const host='http://localhost:8080';
 export function findAllMeetings(){
     return dispatch=>{
         fetch(`${host}/getAllMeetings`)
