@@ -2,6 +2,7 @@ export const Action=Object.freeze({
     loadMeetings:'loadMeetings',
     loadUser:'loadUser',
     showLoginError:'showLoginError',
+    changeView:'changeView',
 });
 
 function loadMeetings(meetings){
@@ -24,7 +25,15 @@ function showLoginError(){
     };
 }
 
-const host='http://138.68.20.45:8080';
+export function changeView(id){
+    return{
+        type:Action.changeView,
+        payload:id,
+    };
+}
+
+//const host='http://138.68.20.45:8080';
+const host='http://localhost:8080';
 export function findAllMeetings(){
     return dispatch=>{
         fetch(`${host}/getAllMeetings`)
@@ -43,6 +52,7 @@ export function findUser(email,password){
         .then(data=>{
             if(password===data.upassword){
                 dispatch(loadUser(data));
+                dispatch(findMeetingsByUserId(data.uid));
             }
             else{
                 dispatch(showLoginError());

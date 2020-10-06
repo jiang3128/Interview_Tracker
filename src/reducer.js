@@ -6,6 +6,7 @@ const intialState={
     meetings:[],
     user:{},
     loginError:false,
+    currentView:0,
 };
 
 function reducer(state=intialState,action){
@@ -25,6 +26,11 @@ function reducer(state=intialState,action){
             return{
                 ...state,
                 loginError:true,
+            };
+        case Action.changeView:
+            return{
+                ...state,
+                currentView:action.payload,
             };
         default:
             return state;
