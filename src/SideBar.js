@@ -43,7 +43,7 @@ function button(userType){
             {meetingCreatorButons.map(button=><div key={i++}>{button}</div>)}
         </div>
         );
-    else
+    else if(userType===2||userType===1||userType===0)
         return(
         <div className="buttonBar">
             {adminButtons.map(button=><div key={i++}>{button}</div>)}
