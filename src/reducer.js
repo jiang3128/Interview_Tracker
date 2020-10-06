@@ -2,10 +2,11 @@ import {Action} from './actions.js';
 
 const intialState={
     currentPage:0,
-    userType:0,
+    userType:-1,
     meetings:[],
     user:{},
     loginError:false,
+    currentView:0,
 };
 
 function reducer(state=intialState,action){
@@ -25,6 +26,11 @@ function reducer(state=intialState,action){
             return{
                 ...state,
                 loginError:true,
+            };
+        case Action.changeView:
+            return{
+                ...state,
+                currentView:action.payload,
             };
         default:
             return state;
