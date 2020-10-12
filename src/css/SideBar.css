@@ -7,6 +7,7 @@
     position: fixed;
     background-color:DarkBlue;
     font-family:Georgia, "Times New Roman", Times, serif;
+    user-select: none;
 }
 
 .logo-container{

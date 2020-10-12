@@ -2,7 +2,6 @@ import {Action} from './actions.js';
 
 const intialState={
     currentPage:0,
-    userType:-1,
     meetings:[],
     user:{},
     loginError:false,
