@@ -7,7 +7,7 @@ const intialState={
     user:{},
     loginError:false,
     currentView:0,
-};
+};         
 
 function reducer(state=intialState,action){
     switch(action.type){

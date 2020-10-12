@@ -9,7 +9,7 @@ function loadMeetings(meetings){
     return{
         type:Action.loadMeetings,
         payload:meetings,
-    };
+    };         
 }
 
 function loadUser(user){
