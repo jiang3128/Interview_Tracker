@@ -22,7 +22,7 @@ function App() {
     <div id="meeting_tracker_root">
       <div className="Header_Info">
         <p>Welcome! {username}</p>
-        {(currentPage!==0)&&<div>Logout</div>}
+        {(currentPage!==0)&&<div onClick = {<Login/>}>Logout</div>} 
       </div>
       <SideBar/>
       <div id="main">
