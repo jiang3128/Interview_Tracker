@@ -31,6 +31,12 @@ function reducer(state=intialState,action){
                 ...state,
                 currentView:action.payload,
             };
+        case Action.userLogout:
+            return{
+                 ...state,
+                currentPage:0,
+                user:{},
+            };
         default:
             return state;
     }

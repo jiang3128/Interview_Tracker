@@ -3,6 +3,7 @@ export const Action=Object.freeze({
     loadUser:'loadUser',
     showLoginError:'showLoginError',
     changeView:'changeView',
+    userLogout:'userLogout',
 });
 
 function loadMeetings(meetings){
@@ -29,6 +30,12 @@ export function changeView(id){
     return{
         type:Action.changeView,
         payload:id,
+    };
+}
+
+export function userLogout(){
+    return{
+        type:Action.userLogout,
     };
 }
 

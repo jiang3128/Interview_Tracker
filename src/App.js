@@ -4,7 +4,7 @@ import {MeetingTracker} from'./MeetingTracker.js';
 import {SideBar} from './SideBar.js';
 import {Login} from './Login.js';
 import {useDispatch,useSelector} from 'react-redux';
-import {findAllMeetings} from './actions.js';
+import {findAllMeetings,userLogout} from './actions.js';
 
 const pages=["","My Meetings","My Files","My Account"];
 
@@ -22,7 +22,7 @@ function App() {
     <div id="meeting_tracker_root">
       <div className="Header_Info">
         <p>Welcome! {username}</p>
-        {(currentPage!==0)&&<div>Logout</div>}
+        {(currentPage!==0)&&<div onClick={()=>logout()}>Logout</div>}
       </div>
       <SideBar/>
       <div id="main">
@@ -33,6 +33,9 @@ function App() {
     </div>
   );
 
+  function logout(){
+    dispatch(userLogout());
+  }
 }
 
 export default App;
