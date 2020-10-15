@@ -1,15 +1,19 @@
 import React from 'react';
 import './css/MeetingView.css';
 import close from './images/close.png';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import { changeView } from './actions';
 
 export function MeetingView(props){
     var info=props.info;
     const dispatch=useDispatch();
+    const option=useSelector(state=>state.currentOption);
     return(
         <div className="overlay">
             <div className="view">
+                <div className="close">
+                    <img src={close} alt="close" onClick={closeView}/>
+                </div>
                 <div className="tag-small">Candidate</div>
                 <div className="tag-small">Participant</div>
                 <div className="info-small">{info.userList.filter(user=>user.type!==5).map(user=>user.uname+'\n')}</div>
@@ -23,7 +27,19 @@ export function MeetingView(props){
                 <div className="tag-big">Status</div>
                 <div className="info-big">{mapStatus(info.meetingStatus)}</div>
             </div>
-            <img src={close} alt="close" onClick={closeView}/>
+            {option!==0&&<div className="option">
+                {option===1&&<div className="feedback">
+                    <h3>Feedback</h3>
+                    <div>{info.feedback}</div>
+                </div>}
+                {option===2&&<div className="chat">
+                    <div className="chat-message">
+                    <h3>Message</h3>
+                    </div>
+                    <textarea className="chat-input"></textarea>
+                    <div className="chat-button">Send</div>
+                </div>}
+            </div>}
         </div>
     );
     function parseTime(time){

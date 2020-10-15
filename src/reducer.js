@@ -1,11 +1,12 @@
 import {Action} from './actions.js';
 
 const intialState={
-    currentPage:0,
+    currentPage:1,
     meetings:[],
     user:{},
     loginError:false,
     currentView:0,
+    currentOption:0,
 };         
 
 function reducer(state=intialState,action){
