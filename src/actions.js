@@ -4,6 +4,7 @@ export const Action=Object.freeze({
     showLoginError:'showLoginError',
     changeView:'changeView',
     userLogout:'userLogout',
+    changeOption:'changeOption',
 });
 
 function loadMeetings(meetings){
@@ -39,8 +40,15 @@ export function userLogout(){
     };
 }
 
-//const host='http://138.68.20.45:8080';
-const host='http://localhost:8080';
+export function changeOption(option){
+    return{
+        type:Action.changeOption,
+        payload:option,
+    };
+}
+
+const host='http://138.68.20.45:8080';
+//const host='http://localhost:8080';
 export function findAllMeetings(){
     return dispatch=>{
         fetch(`${host}/getAllMeetings`)

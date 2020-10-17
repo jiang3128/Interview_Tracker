@@ -2,7 +2,8 @@ import React from 'react';
 import './css/MeetingView.css';
 import close from './images/close.png';
 import {useDispatch,useSelector} from 'react-redux';
-import { changeView } from './actions';
+import { changeView,changeOption } from './actions';
+import {SingleUser} from './SingleUser.js';
 
 export function MeetingView(props){
     var info=props.info;
@@ -10,9 +11,14 @@ export function MeetingView(props){
     const option=useSelector(state=>state.currentOption);
     return(
         <div className="overlay">
+            <div className="button-bar">
+                <div className="buttons" onClick={()=>optionChange(1)}>Messages</div>
+                <div className="buttons" onClick={()=>optionChange(2)}>Feedback</div>
+                <div className="buttons" onClick={()=>optionChange(3)}>People</div>
+            </div>
             <div className="view">
                 <div className="close">
-                    <img src={close} alt="close" onClick={closeView}/>
+                    <img src={close} alt="close" onClick={()=>closeView()}/>
                 </div>
                 <div className="tag-small">Candidate</div>
                 <div className="tag-small">Participant</div>
@@ -39,6 +45,12 @@ export function MeetingView(props){
                     <textarea className="chat-input"></textarea>
                     <div className="chat-button">Send</div>
                 </div>}
+                {option===3&&<div className="people">
+                    <h3>People</h3>
+                    <div className="user-list">
+                        {info.userList.map(user=><SingleUser key={user.uid} user={user}/>)}
+                    </div>
+                </div>}
             </div>}
         </div>
     );
@@ -61,5 +73,8 @@ export function MeetingView(props){
     
     function closeView(){
         dispatch(changeView(0));
+    }
+    function optionChange(option){
+        dispatch(changeOption(option));
     }
 }

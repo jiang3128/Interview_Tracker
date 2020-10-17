@@ -6,7 +6,7 @@ import {Login} from './Login.js';
 import {useDispatch,useSelector} from 'react-redux';
 import {findAllMeetings,userLogout} from './actions.js';
 
-const pages=["","My Meetings","My Files","My Account"];
+const pages=["","My Meetings","My Files","My Account","Create Meeting"];
 
 function App() {
   const dispatch=useDispatch();
