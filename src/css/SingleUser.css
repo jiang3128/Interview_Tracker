@@ -1,0 +1,10 @@
+.single-user{
+    width: 100%;
+    height: 120px;
+}
+.single-user>p{
+    transition: 0.3s;
+}
+.single-user>p:hover{
+    color: gold;
+}

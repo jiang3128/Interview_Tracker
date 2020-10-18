@@ -1,12 +1,12 @@
 import {Action} from './actions.js';
 
 const intialState={
-    currentPage:0,
+    currentPage:1,
+    currentView:0,
+    currentOption:0,
     meetings:[],
     user:{},
     loginError:false,
-    currentView:0,
-    currentOption:0,
 };         
 
 function reducer(state=intialState,action){
@@ -37,6 +37,11 @@ function reducer(state=intialState,action){
                  ...state,
                 currentPage:0,
                 user:{},
+            };
+        case Action.changeOption:
+            return{
+                 ...state,
+                 currentOption:action.payload,
             };
         default:
             return state;
