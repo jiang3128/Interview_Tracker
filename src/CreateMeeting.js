@@ -4,7 +4,7 @@ import './css/CreateMeeting.css';
 export function CreateMeeting(){
     return(
         <form>
-            <div>
+            <div id = "CreateMeeting">
                 <p>Candidate:</p>
                 <select>
                     <option>Jiang Zhu</option>
@@ -12,6 +12,19 @@ export function CreateMeeting(){
                 </select>
                 <p>Participant</p>
                 <select>
+                    <option>First</option>
+                    <option>Dr.Tan</option>
+                    <option>Dr.Heidi</option>
+                    <option>Dr.Rakib</option>
+                </select>
+                <select>
+                    <option>Second(if any)</option>
+                    <option>Dr.Tan</option>
+                    <option>Dr.Heidi</option>
+                    <option>Dr.Rakib</option>
+                </select>
+                <select>
+                    <option>Third(if any)</option>
                     <option>Dr.Tan</option>
                     <option>Dr.Heidi</option>
                     <option>Dr.Rakib</option>
