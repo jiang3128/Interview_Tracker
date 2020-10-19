@@ -3,6 +3,7 @@ import './css/App.css';
 import {MeetingTracker} from'./MeetingTracker.js';
 import {SideBar} from './SideBar.js';
 import {Login} from './Login.js';
+import {CreateMeeting} from './CreateMeeting.js';
 import {useDispatch,useSelector} from 'react-redux';
 import {findAllMeetings,userLogout} from './actions.js';
 
@@ -29,6 +30,9 @@ function App() {
         <div id="title">{pages[currentPage]}</div>
         {(currentPage===0)&&<Login/>}
         {(currentPage===1)&&meetings.map(meeting=><MeetingTracker key={meeting.mid} info={meeting}/>)}
+        {(currentPage===2)}
+        {(currentPage===3)}
+        {(currentPage===4)&&<CreateMeeting/>}
       </div>
     </div>
   );
