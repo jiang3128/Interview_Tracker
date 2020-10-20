@@ -12,8 +12,8 @@ export function MeetingView(props){
     return(
         <div className="overlay">
             <div className="button-bar">
-                <div className="buttons" onClick={()=>optionChange(1)}>Messages</div>
-                <div className="buttons" onClick={()=>optionChange(2)}>Feedback</div>
+                <div className="buttons" onClick={()=>optionChange(1)}>Feedback</div>
+                <div className="buttons" onClick={()=>optionChange(2)}>Messages</div>
                 <div className="buttons" onClick={()=>optionChange(3)}>People</div>
             </div>
             <div className="view">
@@ -22,14 +22,14 @@ export function MeetingView(props){
                 </div>
                 <div className="tag-small">Candidate</div>
                 <div className="tag-small">Participant</div>
-                <div className="info-small">{info.userList.filter(user=>user.type!==5).map(user=>user.uname+'\n')}</div>
                 <div className="info-small">{info.userList.filter(user=>user.type===5).map(user=>user.uname+'\n')}</div>
+                <div className="info-small">{info.userList.filter(user=>user.type!==5).map(user=>user.uname+'\n')}</div>
                 <div className="tag-small">Starting Time</div>
                 <div className="tag-small">Ending Time</div>
                 <div className="info-small">{parseTime(info.startTime)}</div>
                 <div className="info-small">{parseTime(info.endTime)}</div>
                 <div className="tag-big">Location</div>
-                <div className="info-big">{info.location+'\n'+info.room}</div>
+                <div className="info-big">{info.city+'\n'+info.address}</div>
                 <div className="tag-big">Status</div>
                 <div className="info-big">{mapStatus(info.meetingStatus)}</div>
             </div>

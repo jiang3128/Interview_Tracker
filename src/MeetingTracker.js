@@ -12,7 +12,7 @@ export function MeetingTracker(props){
         <div className="Container_Info">
             <div onClick={()=>openView(info.mid)}>
                 <p>{parseTime(info.startTime)+'\xa0\xa0\xa0\xa0~\xa0\xa0\xa0\xa0'+parseTime(info.endTime)}</p>
-                <p>{info.room+', '+info.location}</p>
+                <p>{info.address+', '+info.city}</p>
             </div>
             {currentView===info.mid&&<MeetingView key={info.mid} info={info}/>}
         </div>
