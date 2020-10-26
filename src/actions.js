@@ -2,6 +2,7 @@ export const Action=Object.freeze({
     loadMeetings:'loadMeetings',
     loadUser:'loadUser',
     showLoginError:'showLoginError',
+    finishingAddingRequest:'finishingAddingRequest',
     changeView:'changeView',
     userLogout:'userLogout',
     changeOption:'changeOption',
@@ -24,6 +25,13 @@ function loadUser(user){
 function showLoginError(){
     return{
         type:Action.showLoginError,
+    };
+}
+// new
+export function finishingAddingRequest(candidate){
+    return{
+        type: Action.finishingAddingRequest,
+        payload: candidate,
     };
 }
 
@@ -83,6 +91,27 @@ export function findMeetingsByUserId(id){
         .then(response=>response.json())
         .then(data=>{
             dispatch(loadMeetings(data));
+        })
+        .catch(error=>console.log(error));
+    };
+}
+// new
+export function startAddingRequest(candidate){
+    const options ={
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json',
+        },
+    }
+    return dispatch=>{
+        fetch(`${host}/setMeeting/${candidate}`, options)
+        .then(response=>response.json())
+        .then(data=>{
+            if(data.ok){
+                candidate.id = data.id;
+                dispatch(finishingAddingRequest(data));
+            }
+            
         })
         .catch(error=>console.log(error));
     };

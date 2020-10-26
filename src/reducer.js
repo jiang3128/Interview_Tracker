@@ -27,6 +27,12 @@ function reducer(state=intialState,action){
                 ...state,
                 loginError:true,
             };
+            //new
+        case Action.finishingAddingRequest:
+            return{
+                ...state,
+                candidate: [action.payload, ...state.candidate],
+            }
         case Action.changeView:
             return{
                 ...state,

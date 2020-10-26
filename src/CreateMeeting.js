@@ -1,15 +1,22 @@
 import React from 'react';
+// import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import {startAddingRequest} from './actions';
 import './css/CreateMeeting.css';
 
 export function CreateMeeting(){
+    // const candidate = useSelector(state=>state.candidate);
+    const dispatch=useDispatch();
     return(
         <form>
             <div id = "CreateMeeting">
-                <p>Candidate:</p>
-                <select>
-                    <option>Jiang Zhu</option>
-                    <option>Dai Jun Feng</option>
+                <p id>Candidate:</p>
+                <select id = "candidate">
+                    <option id >Jiang Zhu</option>
+                    <option id >Dai Jun Feng</option>
                 </select>
+                {/* not sure how this work */}
+                {/* {candidate.map(memory => <Memory key = {memory.candidate}/>)} */}
                 <p>Participant</p>
                 <select>
                     <option>First</option>
@@ -44,8 +51,12 @@ export function CreateMeeting(){
                 <p>Feedback/Comments</p>
                 <textarea/>
                 <br/>
-                <div id="login-button">Submit</div>
+                <div id="login-button" onClick = {()=>submit_meeting()}>Submit</div>
             </div>
         </form>
     );
+        //new
+    function submit_meeting(){
+        dispatch(startAddingRequest(document.setElementById('candidate').value));
+    }
 }
