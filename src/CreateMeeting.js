@@ -14,6 +14,7 @@ export function CreateMeeting(){
                 <select id = "candidate">
                     <option id >Jiang Zhu</option>
                     <option id >Dai Jun Feng</option>
+                    
                 </select>
                 {/* not sure how this work */}
                 {/* {candidate.map(memory => <Memory key = {memory.candidate}/>)} */}
