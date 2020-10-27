@@ -1,7 +1,7 @@
 import {Action} from './actions.js';
 
 const intialState={
-    currentPage:2,
+    currentPage:4,
     currentView:0,
     currentOption:0,
     meetings:[],

@@ -51,7 +51,7 @@ export function CreateMeeting(){
                 <div className = "tag-small3">Feedback/Comments</div>
                 <textarea className = "info-small4" ></textarea>
                 <br/>
-                <div className="login-button" onClick = {()=>submit_meeting()}>Submit</div>
+                <div className="submitMeeting-button" onClick = {()=>submit_meeting()}>Submit</div>
             </div>
         </form>
     );
