@@ -1,10 +1,20 @@
-import React from 'react';
-import {useDispatch} from 'react-redux';
-import {startAddingRequest} from './actions';
+import React,{useEffect} from 'react';
+import {useDispatch,useSelector} from 'react-redux';
+import {findCandiate,findParticipant,findLocation} from './actions';
 import './css/CreateMeeting.css';
 
 export function CreateMeeting(){
     const dispatch=useDispatch();
+    const candidates=useSelector(state=>state.candidate);
+    const participants=useSelector(state=>state.participant);
+    const locations=useSelector(state=>state.location);
+
+    useEffect(()=>{
+        dispatch(findCandiate());
+        dispatch(findParticipant());
+        dispatch(findLocation());
+    },[dispatch]);
+    
     return(
         <form>
             <div id = "CreateMeeting">
@@ -12,33 +22,26 @@ export function CreateMeeting(){
                 <div className="input">
                     <select>
                         <option></option>
-                        <option>Jiang Zhu</option>
-                        <option>Dai Jun Feng</option>
+                        {candidates.map(candidate=><option key={candidate.uid}>{candidate.uname}</option>)}
                     </select>
                 </div>
                 <p>Participant:</p>
                 <div className="input">
                     <select>
                         <option></option>
-                        <option>Dr.Tan</option>
-                        <option>Dr.Heidi</option>
-                        <option>Dr.Rakib</option>
+                        {participants.map(participant=><option key={participant.uid}>{participant.uname}</option>)}
                     </select>
                 </div>
                 <div className="input">
                     <select>
                         <option></option>
-                        <option>Dr.Tan</option>
-                        <option>Dr.Heidi</option>
-                        <option>Dr.Rakib</option>
+                        {participants.map(participant=><option key={participant.uid}>{participant.uname}</option>)}
                     </select>
                 </div>
                 <div className="input">
                     <select>
                         <option></option>
-                        <option>Dr.Tan</option>
-                        <option>Dr.Heidi</option>
-                        <option>Dr.Rakib</option>
+                        {participants.map(participant=><option key={participant.uid}>{participant.uname}</option>)}
                     </select>
                 </div>
                 <p>Meeting Start Time:</p>
@@ -55,9 +58,7 @@ export function CreateMeeting(){
                 <div className="input">
                     <select>
                         <option></option>
-                        <option>Davies Center 101</option>
-                        <option>Davies Center 102</option>
-                        <option>Davies Center 103</option>
+                        {locations.map(location=><option key={location.lid}>{location.address}, {location.city}</option>)}
                     </select>
                 </div>
                 <div id="submit-button" onClick = {()=>submitMeeting()}>Submit</div>

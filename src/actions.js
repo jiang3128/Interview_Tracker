@@ -6,6 +6,9 @@ export const Action=Object.freeze({
     changeView:'changeView',
     userLogout:'userLogout',
     changeOption:'changeOption',
+    loadCandidate:'loadCandidate',
+    loadParticipant:'loadParticipant',
+    loadLocation:'loadLocation',
 });
 
 function loadMeetings(meetings){
@@ -27,6 +30,28 @@ function showLoginError(){
         type:Action.showLoginError,
     };
 }
+
+function loadCandidate(candidate){
+    return{
+        type:Action.loadCandidate,
+        payload:candidate,
+    };
+}
+
+function loadParticipant(participant){
+    return{
+        type:Action.loadParticipant,
+        payload:participant,
+    };
+}
+
+function loadLocation(location){
+    return{
+        type:Action.loadLocation,
+        payload:location,
+    };
+}
+
 // new
 export function finishingAddingRequest(candidate){
     return{
@@ -55,8 +80,8 @@ export function changeOption(option){
     };
 }
 
-const host='http://138.68.20.45:8080';
-//const host='http://localhost:8080';
+//const host='http://138.68.20.45:8080';
+const host='http://localhost:8080';
 export function findAllMeetings(){
     return dispatch=>{
         fetch(`${host}/getAllMeetings`)
@@ -112,6 +137,39 @@ export function startAddingRequest(candidate){
                 dispatch(finishingAddingRequest(data));
             }
             
+        })
+        .catch(error=>console.log(error));
+    };
+}
+
+export function findCandiate(){
+    return dispatch=>{
+        fetch(`${host}/getCandidate`)
+        .then(response=>response.json())
+        .then(data=>{
+            dispatch(loadCandidate(data));
+        })
+        .catch(error=>console.log(error));
+    };
+}
+
+export function findParticipant(){
+    return dispatch=>{
+        fetch(`${host}/getParticipant`)
+        .then(response=>response.json())
+        .then(data=>{
+            dispatch(loadParticipant(data));
+        })
+        .catch(error=>console.log(error));
+    };
+}
+
+export function findLocation(){
+    return dispatch=>{
+        fetch(`${host}/getLocation`)
+        .then(response=>response.json())
+        .then(data=>{
+            dispatch(loadLocation(data));
         })
         .catch(error=>console.log(error));
     };

@@ -7,6 +7,9 @@ const intialState={
     meetings:[],
     user:{},
     loginError:false,
+    candidate:[],
+    participant:[],
+    location:[],
 };         
 
 function reducer(state=intialState,action){
@@ -40,14 +43,29 @@ function reducer(state=intialState,action){
             };
         case Action.userLogout:
             return{
-                 ...state,
+                ...state,
                 currentPage:0,
                 user:{},
             };
         case Action.changeOption:
             return{
-                 ...state,
-                 currentOption:action.payload,
+                ...state,
+                currentOption:action.payload,
+            };
+        case Action.loadCandidate:
+            return{
+                ...state,
+                candidate:action.payload,
+            };
+        case Action.loadParticipant:
+            return{
+                ...state,
+                participant:action.payload,
+            };
+        case Action.loadLocation:
+            return{
+                ...state,
+                location:action.payload,
             };
         default:
             return state;
