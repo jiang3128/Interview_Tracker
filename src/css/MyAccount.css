@@ -1,0 +1,19 @@
+.tag-small2{
+    width: 200px;
+    height: 30px;
+    margin-left:25px;
+    margin-right: 25px;
+    margin-top:20px;
+    border-bottom: darkblue solid 3px;
+    font-size: larger;
+    position: relative;
+    right: 150%;
+}
+.info-small2{
+    width: 200px;
+    height: 30px;
+    margin-left:25px;
+    margin-right: 25px;
+    white-space:pre-wrap;
+    font-size: large;
+}

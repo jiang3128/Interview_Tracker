@@ -1,4 +1,46 @@
-#CreateMeeting>p{
-    font-size: 20px;
-    margin:5px 0;
+.tag-small3{
+    width: 200px;
+    height: 30px;
+    margin-left:25px;
+    margin-right: 25px;
+    margin-top:5px;
+    margin-bottom: 5px;
+    border-bottom: darkblue solid 3px;
+    font-size: larger;
+    position: relative;
+    right: 0%;
 }
+.info-small3{
+    width: 200px;
+    height: 30px;
+    margin-left:25px;
+    margin-right: 25px;
+    white-space:pre-wrap;
+    font-size: large;
+    position: relative;
+    right: 0%;
+}
+.info-small4{
+    width: 400px;
+    height: 70px;
+    margin-left:25px;
+    margin-right: 25px;
+}
+
+.login-button{
+  height: 40px;
+  line-height: 40px;
+  margin-left: 25px;
+  width: 150px;
+  text-align: center;
+  font-size: larger;
+  border: darkblue solid 1px;
+  border-radius: 3px;
+}
+
+.login-button:hover{
+    background-color: darkblue;
+    color: gold;
+    cursor: pointer;
+    transition: 0.3s;
+  }

@@ -10,49 +10,48 @@ export function CreateMeeting(){
     return(
         <form>
             <div id = "CreateMeeting">
-                <p id>Candidate:</p>
-                <select id = "candidate">
+                <div className = "tag-small3">Candidate:</div>
+                <select id = "candidate" className = "info-small3">
                     <option id >Jiang Zhu</option>
                     <option id >Dai Jun Feng</option>
-                    
                 </select>
                 {/* not sure how this work */}
                 {/* {candidate.map(memory => <Memory key = {memory.candidate}/>)} */}
-                <p>Participant</p>
-                <select>
+                <div className = "tag-small3">Participant</div>
+                <select className = "info-small3">
                     <option>First</option>
                     <option>Dr.Tan</option>
                     <option>Dr.Heidi</option>
                     <option>Dr.Rakib</option>
                 </select>
-                <select>
+                <select className = "info-small3">
                     <option>Second(if any)</option>
                     <option>Dr.Tan</option>
                     <option>Dr.Heidi</option>
                     <option>Dr.Rakib</option>
                 </select>
-                <select>
+                <select className = "info-small3">
                     <option>Third(if any)</option>
                     <option>Dr.Tan</option>
                     <option>Dr.Heidi</option>
                     <option>Dr.Rakib</option>
                 </select>
-                <p>Meeting Start Time:</p>
-                <input type = 'time'/>
-                <input type = 'date'/>
-                <p>Meeting End Time:</p>
-                <input type = 'time'/>
-                <input type = 'date'/>
-                <p>Room</p>
-                <select>
+                <div className = "tag-small3">Meeting Start Time:</div>
+                <input className = "info-small3" type = 'time'/>
+                <input className = "info-small3"    type = 'date'/>
+                <div className = "tag-small3">Meeting End Time:</div>
+                <input className = "info-small3" type = 'time'/>
+                <input className = "info-small3" type = 'date'/>
+                <div className = "tag-small3">Room</div>
+                <select className = "info-small3">
                     <option>Davies Center 101</option>
                     <option>Davies Center 102</option>
                     <option>Davies Center 103</option>
                 </select>
-                <p>Feedback/Comments</p>
-                <textarea/>
+                <div className = "tag-small3">Feedback/Comments</div>
+                <textarea className = "info-small4" ></textarea>
                 <br/>
-                <div id="login-button" onClick = {()=>submit_meeting()}>Submit</div>
+                <div className="login-button" onClick = {()=>submit_meeting()}>Submit</div>
             </div>
         </form>
     );
