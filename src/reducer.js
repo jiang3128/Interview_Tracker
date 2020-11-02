@@ -1,7 +1,7 @@
 import {Action} from './actions.js';
 
 const intialState={
-    currentPage:4,
+    currentPage:0,
     currentView:0,
     currentOption:0,
     meetings:[],
@@ -51,6 +51,11 @@ function reducer(state=intialState,action){
             return{
                 ...state,
                 currentOption:action.payload,
+            };
+        case Action.changePage:
+            return{
+                ...state,
+                currentPage:action.payload,
             };
         case Action.loadCandidate:
             return{

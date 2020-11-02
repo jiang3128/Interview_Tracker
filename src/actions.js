@@ -6,6 +6,7 @@ export const Action=Object.freeze({
     changeView:'changeView',
     userLogout:'userLogout',
     changeOption:'changeOption',
+    changePage:'changePage',
     loadCandidate:'loadCandidate',
     loadParticipant:'loadParticipant',
     loadLocation:'loadLocation',
@@ -77,6 +78,13 @@ export function changeOption(option){
     return{
         type:Action.changeOption,
         payload:option,
+    };
+}
+
+export function changePage(page){
+    return{
+        type:Action.changePage,
+        payload:page,
     };
 }
 

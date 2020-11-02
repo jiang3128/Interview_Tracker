@@ -44,17 +44,17 @@ export function CreateMeeting(){
                         {participants.map(participant=><option key={participant.uid}>{participant.uname}</option>)}
                     </select>
                 </div>
-                <p>Meeting Start Time:</p>
+                <p>Start Time:</p>
                 <div className="input">
                     <input type = 'time'/>
                     <input type = 'date'/>
                 </div>
-                <p>Meeting End Time:</p>
+                <p>End Time:</p>
                 <div className="input">
                     <input type = 'time'/>
                     <input type = 'date'/>
                 </div>
-                <p>Room</p>
+                <p>Location</p>
                 <div className="input">
                     <select>
                         <option></option>

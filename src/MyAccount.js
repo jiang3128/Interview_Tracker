@@ -3,7 +3,7 @@ import './css/MyAccount.css';
 
 export function MyAccount(){
     return(
-        <div classname>
+        <div>
             <div className = "tag-small2">Name:</div>
             <div className="info-small2">Jiang Zhu</div>
             <div className = "tag-small2">Position/Role:</div>
