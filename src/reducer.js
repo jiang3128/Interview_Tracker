@@ -1,7 +1,7 @@
 import {Action} from './actions.js';
 
 const intialState={
-    currentPage:0,
+    currentPage:4,
     currentView:0,
     currentOption:0,
     meetings:[],
@@ -30,12 +30,6 @@ function reducer(state=intialState,action){
                 ...state,
                 loginError:true,
             };
-            //new
-        case Action.finishingAddingRequest:
-            return{
-                ...state,
-                candidate: [action.payload, ...state.candidate],
-            }
         case Action.changeView:
             return{
                 ...state,

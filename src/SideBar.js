@@ -56,7 +56,6 @@ export function SideBar(){
             );
     }
     function skip(page){
-        console.log(page);
         dispatch(changePage(page));
     }
 }
