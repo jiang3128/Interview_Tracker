@@ -2,10 +2,10 @@ export const Action=Object.freeze({
     loadMeetings:'loadMeetings',
     loadUser:'loadUser',
     showLoginError:'showLoginError',
-    finishingAddingRequest:'finishingAddingRequest',
     changeView:'changeView',
     userLogout:'userLogout',
     changeOption:'changeOption',
+    changePage:'changePage',
     loadCandidate:'loadCandidate',
     loadParticipant:'loadParticipant',
     loadLocation:'loadLocation',
@@ -52,14 +52,6 @@ function loadLocation(location){
     };
 }
 
-// new
-export function finishingAddingRequest(candidate){
-    return{
-        type: Action.finishingAddingRequest,
-        payload: candidate,
-    };
-}
-
 export function changeView(id){
     return{
         type:Action.changeView,
@@ -77,6 +69,13 @@ export function changeOption(option){
     return{
         type:Action.changeOption,
         payload:option,
+    };
+}
+
+export function changePage(page){
+    return{
+        type:Action.changePage,
+        payload:page,
     };
 }
 
@@ -120,24 +119,21 @@ export function findMeetingsByUserId(id){
         .catch(error=>console.log(error));
     };
 }
-// new
-export function startAddingRequest(candidate){
-    const options ={
-        method: 'POST',
-        headers:{
-            'Content-Type': 'application/json',
-        },
-    }
+
+export function createMeeting(userList,startTime,endTime,lid){
     return dispatch=>{
-        fetch(`${host}/setMeeting/${candidate}`, options)
-        .then(response=>response.json())
-        .then(data=>{
-            if(data.ok){
-                candidate.id = data.id;
-                dispatch(finishingAddingRequest(data));
-            }
-            
-        })
+        var status=0;
+        var feedback=null;
+        const meeting={userList,startTime,endTime,lid,status,feedback};
+        const options ={
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body:JSON.stringify(meeting),
+        }
+        console.log(options.body);
+        fetch(`${host}/insertMeeting`, options)
         .catch(error=>console.log(error));
     };
 }

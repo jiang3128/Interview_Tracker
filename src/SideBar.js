@@ -1,16 +1,23 @@
 import React from 'react';
 import './css/SideBar.css';
 import logo from './images/logo.png'
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
+import {changePage} from './actions.js';
 
-const candidateButtons=["My Meetings","My Files","My Account"];
-const participantButtons=["My Meetings","My Account"];
-const meetingCreatorButons=["My Meetings","Create Meeting","My Account"];
-const adminButtons=["My Meetings","Create Meeting","Create Account","My Account"];
+const myMeeting={key:1,value:"My Meeting"};
+const myFiles={key:2,value:"My Files"};
+const myAccount={key:3,value:"My Account"};
+const createMeeting={key:4,value:"Create Meeting"};
+const createAccount={key:5,value:"Create Account"};
+const candidateButtons=[myMeeting,myFiles,myAccount];
+const participantButtons=[myMeeting,myAccount];
+const meetingCreatorButons=[myMeeting,createMeeting,myAccount];
+const adminButtons=[myMeeting,createMeeting,createAccount,myAccount];
 
 export function SideBar(){
     const userType=useSelector(state=>state.user.type);
-    
+    const dispatch=useDispatch();
+
     return(
         <div className="sider">
             <div className="logo-container">
@@ -22,31 +29,33 @@ export function SideBar(){
             {button(userType)}
         </div>
     );
-}
-function button(userType){
-    var i=0;
-    if(userType===5)
-        return(
-        <div className="buttonBar">
-            {candidateButtons.map(button=><div key={i++}>{button}</div>)}
-        </div>
-        );
-    else if(userType===4)
-        return(
-        <div className="buttonBar">
-            {participantButtons.map(button=><div key={i++}>{button}</div>)}
-        </div>
-        );
-    else if(userType===3)
-        return(
-        <div className="buttonBar">
-            {meetingCreatorButons.map(button=><div key={i++}>{button}</div>)}
-        </div>
-        );
-    else if(userType===2||userType===1||userType===0)
-        return(
-        <div className="buttonBar">
-            {adminButtons.map(button=><div key={i++}>{button}</div>)}
-        </div>
-        );
+    function button(userType){
+        if(userType===5)
+            return(
+            <div className="buttonBar">
+                {candidateButtons.map(button=><div key={button.key} onClick={()=>skip(button.key)}>{button.value}</div>)}
+            </div>
+            );
+        else if(userType===4)
+            return(
+            <div className="buttonBar">
+                {participantButtons.map(button=><div key={button.key} onClick={()=>skip(button.key)}>{button.value}</div>)}
+            </div>
+            );
+        else if(userType===3)
+            return(
+            <div className="buttonBar">
+                {meetingCreatorButons.map(button=><div key={button.key} onClick={()=>skip(button.key)}>{button.value}</div>)}
+            </div>
+            );
+        else if(userType===2||userType===1||userType===0)
+            return(
+            <div className="buttonBar">
+                {adminButtons.map(button=><div key={button.key} onClick={()=>skip(button.key)}>{button.value}</div>)}
+            </div>
+            );
+    }
+    function skip(page){
+        dispatch(changePage(page));
+    }
 }
