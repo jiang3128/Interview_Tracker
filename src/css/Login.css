@@ -16,7 +16,7 @@
   width: 80%;
   outline-style: none;
   border:1px solid darkgray;
-  border-radius: 3px
+  border-radius: 3px;
 }
 #login>input:focus{
   border-color: #66afe9;

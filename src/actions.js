@@ -121,7 +121,6 @@ export function findMeetingsByUserId(id){
 }
 
 export function createMeeting(userList,startTime,endTime,lid){
-    return dispatch=>{
         var status=0;
         var feedback=null;
         const meeting={userList,startTime,endTime,lid,status,feedback};
@@ -132,10 +131,8 @@ export function createMeeting(userList,startTime,endTime,lid){
             },
             body:JSON.stringify(meeting),
         }
-        console.log(options.body);
         fetch(`${host}/insertMeeting`, options)
         .catch(error=>console.log(error));
-    };
 }
 
 export function findCandiate(){
