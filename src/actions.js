@@ -121,18 +121,18 @@ export function findMeetingsByUserId(id){
 }
 
 export function createMeeting(userList,startTime,endTime,lid){
-        var status=0;
-        var feedback=null;
-        const meeting={userList,startTime,endTime,lid,status,feedback};
-        const options ={
-            method: 'POST',
-            headers:{
-                'Content-Type': 'application/json',
-            },
-            body:JSON.stringify(meeting),
-        }
-        fetch(`${host}/insertMeeting`, options)
-        .catch(error=>console.log(error));
+    var status=0;
+    var feedback=null;
+    const meeting={userList,startTime,endTime,lid,status,feedback};
+    const options ={
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json',
+        },
+        body:JSON.stringify(meeting),
+    }
+    fetch(`${host}/insertMeeting`, options)
+    .catch(error=>console.log(error));
 }
 
 export function findCandiate(){
