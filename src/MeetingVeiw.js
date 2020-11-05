@@ -4,6 +4,7 @@ import close from './images/close.png';
 import {useDispatch,useSelector} from 'react-redux';
 import { changeView,changeOption } from './actions';
 import {SingleUser} from './SingleUser.js';
+import {Message} from './Message.js'
 
 export function MeetingView(props){
     var info=props.info;
@@ -40,7 +41,14 @@ export function MeetingView(props){
                 </div>}
                 {option===2&&<div className="chat">
                     <div className="chat-message">
-                    <h3>Message</h3>
+                        <h3>Message</h3>
+                        <div className="chat-body">
+                            <Message/>
+                            <Message/>
+                            <Message/>
+                            <Message/>
+                            <Message/>
+                        </div>
                     </div>
                     <textarea className="chat-input"></textarea>
                     <div className="chat-button">Send</div>
