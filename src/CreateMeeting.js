@@ -31,26 +31,26 @@ export function CreateMeeting(){
                 <p>Candidate:</p>
                 <div className="input">
                     <select onChange={event=>setCandidate(event)}>
-                        <option></option>
+                        <option value={-1}></option>
                         {candidates.map(candidate=><option key={candidate.uid} value={candidate.uid}>{candidate.uname}</option>)}
                     </select>
                 </div>
                 <p>Participant:</p>
                 <div className="input">
                     <select onChange={event=>setParticipant1(event)}>
-                        <option></option>
+                        <option value={-1}></option>
                         {participants.map(participant=><option key={participant.uid} value={participant.uid}>{participant.uname}</option>)}
                     </select>
                 </div>
                 <div className="input">
                     <select onChange={event=>setParticipant2(event)}>
-                        <option></option>
+                        <option value={-1}></option>
                         {participants.map(participant=><option key={participant.uid} value={participant.uid}>{participant.uname}</option>)}
                     </select>
                 </div>
                 <div className="input">
                     <select onChange={event=>setParticipant3(event)}>
-                        <option></option>
+                        <option value={-1}></option>
                         {participants.map(participant=><option key={participant.uid} value={participant.uid}>{participant.uname}</option>)}
                     </select>
                 </div>
@@ -141,8 +141,9 @@ export function CreateMeeting(){
                     userList.push(participant3);
                 userList.push(candidate);
                 userList=userList.map(user=>{return{uid:parseInt(user)};});
-                dispatch(createMeeting(userList,start.toJSON().substr(0, 19).replace(/T/,' '),
-                end.toJSON().substr(0, 19).replace(/T/,' '),parseInt(location)));
+                createMeeting(userList,start.toJSON().substr(0, 19).replace(/T/,' '),
+                end.toJSON().substr(0, 19).replace(/T/,' '),parseInt(location));
+                alert('Create Meeting Success!');
             }
         }
     }
