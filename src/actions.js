@@ -9,6 +9,7 @@ export const Action=Object.freeze({
     loadCandidate:'loadCandidate',
     loadParticipant:'loadParticipant',
     loadLocation:'loadLocation',
+    loadUserType:'loadUserType',
 });
 
 function loadMeetings(meetings){
@@ -49,6 +50,13 @@ function loadLocation(location){
     return{
         type:Action.loadLocation,
         payload:location,
+    };
+}
+//get user types from the backend
+function loadUserType(userType){
+    return{
+        type:Action.loadUserType,
+        payload:userType,
     };
 }
 
@@ -134,9 +142,18 @@ export function createMeeting(userList,startTime,endTime,lid){
     fetch(`${host}/insertMeeting`, options)
     .catch(error=>console.log(error));
 }
-
+// create account - grab user Input and insert to our database
 export function createAccount(userName,emailAddress,userType){
-    const account={userName}
+    const account={userName,emailAddress,userType}
+    const options ={
+        method:'POST',
+        headers:{
+            'Content-Type': 'application/json',
+        },
+        body:JSON.stringify(account),
+    }
+    fetch(`${host}/insertAccount`,options)
+    .catch(error=>console.log(error));
 }
 
 export function findCandiate(){
@@ -167,6 +184,17 @@ export function findLocation(){
         .then(response=>response.json())
         .then(data=>{
             dispatch(loadLocation(data));
+        })
+        .catch(error=>console.log(error));
+    };
+}
+//get user types from the backend
+export function findUserType(){
+    return dispatch=>{
+        fetch(`${host}/getUserType`)
+        .then(response=>response.json())
+        .then(data=>{
+            dispatch(loadUserType(data));
         })
         .catch(error=>console.log(error));
     };
