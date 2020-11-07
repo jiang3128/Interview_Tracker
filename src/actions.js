@@ -135,6 +135,10 @@ export function createMeeting(userList,startTime,endTime,lid){
     .catch(error=>console.log(error));
 }
 
+export function createAccount(userName,emailAddress,userType){
+    const account={userName}
+}
+
 export function findCandiate(){
     return dispatch=>{
         fetch(`${host}/getCandidate`)

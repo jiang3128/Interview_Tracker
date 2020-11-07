@@ -4,12 +4,13 @@ import {MeetingTracker} from'./MeetingTracker.js';
 import {SideBar} from './SideBar.js';
 import {Login} from './Login.js';
 import {CreateMeeting} from './CreateMeeting.js';
+import {CreateAccount} from './CreateAccount.js';
 import {MyFile} from'./MyFile.js';
 import {MyAccount} from './MyAccount.js';
 import {useDispatch,useSelector} from 'react-redux';
 import {findAllMeetings,userLogout} from './actions.js';
 
-const pages=["","My Meetings","My Files","My Account","Create Meeting"];
+const pages=["","My Meetings","My Files","My Account","Create Meeting","Create Account"];
 
 function App() {
   const dispatch=useDispatch();
@@ -35,6 +36,7 @@ function App() {
         {(currentPage===2)&&<MyFile/>}
         {(currentPage===3)&&<MyAccount/>}
         {(currentPage===4)&&<CreateMeeting/>}
+        {(currentPage===5)&&<CreateAccount/>}
       </div>
     </div>
   );
