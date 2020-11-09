@@ -15,7 +15,7 @@ export function MeetingView(props) {
             <div className="button-bar">
                 <div className="buttons" onClick={() => optionChange(1)}>Feedback</div>
                 <div className="buttons" onClick={() => optionChange(2)}>Messages</div>
-                <div className="buttons" onClick={()=>optionChange(3)}>People</div>
+                <div className="buttons" onClick={() => optionChange(3)}>People</div>
             </div>
             <div className="view">
                 <div className="close">

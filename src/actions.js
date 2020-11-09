@@ -87,8 +87,8 @@ export function changePage(page){
     };
 }
 
-//const host='http://138.68.20.45:8080';
-const host='http://localhost:8080';
+const host='http://138.68.20.45:8080';
+//const host='http://localhost:8080';
 export function findAllMeetings(){
     return dispatch=>{
         fetch(`${host}/getAllMeetings`)
@@ -140,6 +140,19 @@ export function createMeeting(userList,startTime,endTime,lid){
         body:JSON.stringify(meeting),
     }
     fetch(`${host}/insertMeeting`, options)
+    .catch(error=>console.log(error));
+}
+
+export function deleteMeeting(userList,startTime,endTime,lid){
+    var status=0;
+    var feedback=null;
+    const meeting={userList,startTime,endTime,lid,status,feedback};
+    const options ={
+        method: 'DELETE',
+        body:JSON.stringify(meeting), 
+    }
+    //deleteMeeting
+    fetch(`${host}/deleteMeeting`, options)
     .catch(error=>console.log(error));
 }
 // create account - grab user Input and insert to our database
