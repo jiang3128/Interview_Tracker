@@ -1,8 +1,8 @@
 import React from 'react';
 import './css/SideBar.css';
 import logo from './images/logo.png'
-import {useSelector,useDispatch} from 'react-redux';
-import {changePage,findMeetingsByUserId} from './actions.js';
+import {useDispatch, useSelector} from 'react-redux';
+import {changePage, findMeetingsByUserId} from './actions.js';
 
 const myFiles={key:2,value:"My Files"};
 const myAccount={key:3,value:"My Account"};

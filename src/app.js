@@ -1,22 +1,22 @@
-import React,{useEffect} from 'react';
+import React, {useEffect} from 'react';
 import './css/App.css';
-import {MeetingTracker} from'./MeetingTracker.js';
-import {SideBar} from './SideBar.js';
-import {Login} from './Login.js';
-import {CreateMeeting} from './CreateMeeting.js';
-import {CreateAccount} from './CreateAccount.js';
-import {MyFile} from'./MyFile.js';
-import {MyAccount} from './MyAccount.js';
-import {useDispatch,useSelector} from 'react-redux';
-import {findAllMeetings,userLogout} from './actions.js';
+import {MeetingTracker} from './meeting-tracker.js';
+import {SideBar} from './side-bar.js';
+import {Login} from './login.js';
+import {CreateMeeting} from './create-meeting.js';
+import {CreateAccount} from './create-account.js';
+import {MyFile} from './my-file.js';
+import {MyAccount} from './my-account.js';
+import {useDispatch, useSelector} from 'react-redux';
+import {findAllMeetings, userLogout} from './actions.js';
 
-const pages=["","My Meetings","My Files","My Account","Create Meeting","Create Account"];
+const pages = ["", "My Meetings", "My Files", "My Account", "Create Meeting", "Create Account"];
 
 function App() {
-  const dispatch=useDispatch();
-  const meetings=useSelector(state=>state.meetings);
-  const currentPage=useSelector(state=>state.currentPage);
-  const username=useSelector(state=>state.user.uname);
+    const dispatch = useDispatch();
+    const meetings = useSelector(state => state.meetings);
+    const currentPage = useSelector(state => state.currentPage);
+    const username = useSelector(state => state.user.uname);
 
   useEffect(()=>{
     dispatch(findAllMeetings());

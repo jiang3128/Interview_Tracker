@@ -1,8 +1,8 @@
 import React from 'react';
-import {MeetingView} from './MeetingVeiw.js';
+import {MeetingView} from './meeting-view.js';
 import './css/MeetingTracker.css';
-import {useDispatch,useSelector} from 'react-redux';
-import { changeView } from './actions.js';
+import {useDispatch, useSelector} from 'react-redux';
+import {changeView} from './actions.js';
 
 export function MeetingTracker(props){
     var info = props.info;

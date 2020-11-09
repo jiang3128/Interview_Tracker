@@ -1,20 +1,20 @@
 import React from 'react';
 import './css/MeetingView.css';
 import close from './images/close.png';
-import {useDispatch,useSelector} from 'react-redux';
-import { changeView,changeOption } from './actions';
-import {SingleUser} from './SingleUser.js';
-import {Message} from './Message.js'
+import {useDispatch, useSelector} from 'react-redux';
+import {changeOption, changeView} from './actions';
+import {SingleUser} from './single-user.js';
+import {Message} from './message.js'
 
-export function MeetingView(props){
-    var info=props.info;
-    const dispatch=useDispatch();
-    const option=useSelector(state=>state.currentOption);
-    return(
+export function MeetingView(props) {
+    var info = props.info;
+    const dispatch = useDispatch();
+    const option = useSelector(state => state.currentOption);
+    return (
         <div className="overlay">
             <div className="button-bar">
-                <div className="buttons" onClick={()=>optionChange(1)}>Feedback</div>
-                <div className="buttons" onClick={()=>optionChange(2)}>Messages</div>
+                <div className="buttons" onClick={() => optionChange(1)}>Feedback</div>
+                <div className="buttons" onClick={() => optionChange(2)}>Messages</div>
                 <div className="buttons" onClick={()=>optionChange(3)}>People</div>
             </div>
             <div className="view">
