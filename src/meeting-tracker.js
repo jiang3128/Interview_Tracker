@@ -1,6 +1,6 @@
 import React from 'react';
 import {MeetingView} from './meeting-view.js';
-import './css/MeetingTracker.css';
+import './css/meeting-tracker.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {changeView} from './actions.js';
 

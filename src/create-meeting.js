@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {createMeeting, findCandiate, findLocation, findParticipant} from './actions';
-import './css/CreateMeeting.css';
+import './css/create-meeting.css';
 
 export function CreateMeeting(){
     const dispatch=useDispatch();

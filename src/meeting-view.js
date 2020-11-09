@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/MeetingView.css';
+import './css/meeting-view.css';
 import close from './images/close.png';
 import {useDispatch, useSelector} from 'react-redux';
 import {changeOption, changeView} from './actions';

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './css/App.css';
+import './css/app.css';
 import {MeetingTracker} from './meeting-tracker.js';
 import {SideBar} from './side-bar.js';
 import {Login} from './login.js';

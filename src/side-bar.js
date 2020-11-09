@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/SideBar.css';
+import './css/side-bar.css';
 import logo from './images/logo.png'
 import {useDispatch, useSelector} from 'react-redux';
 import {changePage, findMeetingsByUserId} from './actions.js';

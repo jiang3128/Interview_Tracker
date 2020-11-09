@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/SingleUser.css';
+import './css/single-user.css';
 
 export function SingleUser(props){
     var user=props.user;

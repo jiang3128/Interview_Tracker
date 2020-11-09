@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {findUserType} from './actions.js'
-import './css/CreateAccount.css';
+import './css/create-account.css';
 
 export function CreateAccount(){
     const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/MyAccount.css';
+import './css/my-account.css';
 import {useSelector} from 'react-redux';
 
 export function MyAccount(){
