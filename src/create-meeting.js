@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {createMeeting, findCandiate, findLocation, findParticipant} from './actions';
 import './css/create-meeting.css';
+import Upload from './upload';
 
 export function CreateMeeting(){
     const dispatch=useDispatch();
@@ -61,21 +62,26 @@ export function CreateMeeting(){
                 </div>
                 <p>End Time:</p>
                 <div className="input">
-                    <input type = 'time' onChange={event=>setEndTime(event)}/>
-                    <input type = 'date' onChange={event=>setEndDate(event)}/>
+                    <input type='time' onChange={event => setEndTime(event)}/>
+                    <input type='date' onChange={event => setEndDate(event)}/>
                 </div>
                 <p>Location</p>
                 <div className="input">
-                    <select onChange={event=>setLocation(event)}>
+                    <select onChange={event => setLocation(event)}>
                         <option></option>
-                        {locations.map(location=><option key={location.lid} value={location.lid}>{location.address}, {location.city}</option>)}
+                        {locations.map(location => <option key={location.lid}
+                                                           value={location.lid}>{location.address}, {location.city}</option>)}
                     </select>
                 </div>
-                <div id="submit-button" onClick = {()=>submitMeeting()}>Submit</div>
+                <p>File upload</p>
+                <div>
+                    <Upload/>
+                </div>
+                <div id="submit-button" onClick={() => submitMeeting()}>Submit</div>
             </div>
         </form>
     );
-    
+
     function setCandidate(event){
         candidate=event.target.value;
     }
@@ -145,6 +151,7 @@ export function CreateMeeting(){
                 end.toJSON().substr(0, 19).replace(/T/,' '),parseInt(location));
                 alert('Create Meeting Success!');
             }
+
         }
     }
 }
