@@ -5,7 +5,9 @@ const intialState={
     currentView:0,
     currentOption:0,
     meetings:[],
-    user:{},
+    user:{
+        uname: null
+    },
     loginError:false,
     candidate:[],
     participant:[],

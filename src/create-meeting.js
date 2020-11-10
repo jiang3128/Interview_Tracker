@@ -67,7 +67,7 @@ export function CreateMeeting(){
                 <p>Location</p>
                 <div className="input">
                     <select onChange={event=>setLocation(event)}>
-                        <option></option>
+                        <option value={-1}></option>
                         {locations.map(location=><option key={location.lid} value={location.lid}>{location.address}, {location.city}</option>)}
                     </select>
                 </div>
@@ -113,13 +113,13 @@ export function CreateMeeting(){
     }
 
     function submitMeeting(){
-        if(candidate===-1){
+        if(candidate<0){
             alert('Please choose a candidate.');
         }
-        else if(participant1===-1&&participant2===-1&participant3===-1){
+        else if(participant1<0&&participant2<0&participant3<0){
             alert('Please choose at least one participant.');
         }
-        else if(location===-1){
+        else if(location<0){
             alert('Please choose a location.');
         }
         else if(startDate===''||startTime===''||endDate===''||endTime===''){
@@ -133,11 +133,11 @@ export function CreateMeeting(){
             }
             else{
                 var userList=[];
-                if(participant1!==-1)
+                if(participant1>=0)
                     userList.push(participant1);
-                if(participant2!==-1&&participant2!==participant1)
+                if(participant2>=0&&participant2!==participant1)
                     userList.push(participant2);
-                if(participant3!==-1&&participant3!==participant1&&participant3!==participant2)
+                if(participant3>=0&&participant3!==participant1&&participant3!==participant2)
                     userList.push(participant3);
                 userList.push(candidate);
                 userList=userList.map(user=>{return{uid:parseInt(user)};});
