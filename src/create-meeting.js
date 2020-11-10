@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {createMeeting, findCandiate, findLocation, findParticipant} from './actions';
 import './css/create-meeting.css';
-import Upload from './upload';
 
 export function CreateMeeting(){
     const dispatch=useDispatch();
@@ -62,26 +61,21 @@ export function CreateMeeting(){
                 </div>
                 <p>End Time:</p>
                 <div className="input">
-                    <input type='time' onChange={event => setEndTime(event)}/>
-                    <input type='date' onChange={event => setEndDate(event)}/>
+                    <input type = 'time' onChange={event=>setEndTime(event)}/>
+                    <input type = 'date' onChange={event=>setEndDate(event)}/>
                 </div>
                 <p>Location</p>
                 <div className="input">
-                    <select onChange={event => setLocation(event)}>
-                        <option></option>
-                        {locations.map(location => <option key={location.lid}
-                                                           value={location.lid}>{location.address}, {location.city}</option>)}
+                    <select onChange={event=>setLocation(event)}>
+                        <option value={-1}></option>
+                        {locations.map(location=><option key={location.lid} value={location.lid}>{location.address}, {location.city}</option>)}
                     </select>
                 </div>
-                <p>File upload</p>
-                <div>
-                    <Upload/>
-                </div>
-                <div id="submit-button" onClick={() => submitMeeting()}>Submit</div>
+                <div id="submit-button" onClick = {()=>submitMeeting()}>Submit</div>
             </div>
         </form>
     );
-
+    
     function setCandidate(event){
         candidate=event.target.value;
     }
@@ -119,13 +113,13 @@ export function CreateMeeting(){
     }
 
     function submitMeeting(){
-        if(candidate===-1){
+        if(candidate<0){
             alert('Please choose a candidate.');
         }
-        else if(participant1===-1&&participant2===-1&participant3===-1){
+        else if(participant1<0&&participant2<0&participant3<0){
             alert('Please choose at least one participant.');
         }
-        else if(location===-1){
+        else if(location<0){
             alert('Please choose a location.');
         }
         else if(startDate===''||startTime===''||endDate===''||endTime===''){
@@ -139,11 +133,11 @@ export function CreateMeeting(){
             }
             else{
                 var userList=[];
-                if(participant1!==-1)
+                if(participant1>=0)
                     userList.push(participant1);
-                if(participant2!==-1&&participant2!==participant1)
+                if(participant2>=0&&participant2!==participant1)
                     userList.push(participant2);
-                if(participant3!==-1&&participant3!==participant1&&participant3!==participant2)
+                if(participant3>=0&&participant3!==participant1&&participant3!==participant2)
                     userList.push(participant3);
                 userList.push(candidate);
                 userList=userList.map(user=>{return{uid:parseInt(user)};});
@@ -151,7 +145,6 @@ export function CreateMeeting(){
                 end.toJSON().substr(0, 19).replace(/T/,' '),parseInt(location));
                 alert('Create Meeting Success!');
             }
-
         }
     }
 }
