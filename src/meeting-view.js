@@ -45,10 +45,6 @@ export function MeetingView(props) {
                         <h3>Message</h3>
                         <div className="chat-body">
                             <Message/>
-                            <Message/>
-                            <Message/>
-                            <Message/>
-                            <Message/>
                         </div>
                     </div>
                     <textarea className="chat-input"></textarea>
