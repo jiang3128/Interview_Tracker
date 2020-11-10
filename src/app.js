@@ -27,6 +27,7 @@ function App() {
       <div className="Header_Info">
         <p>Welcome! {username}</p>
         {(currentPage!==0)&&<div onClick={()=>logout()}>Logout</div>}
+        {(currentPage!==0)&&<div onClick={() => {window.print()}}>Print</div>}
       </div>
       <SideBar/>
       <div id="main">
