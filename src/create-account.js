@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/create-account.css';
+import {createAccount} from './actions.js';
 
 export function CreateAccount(){
 
@@ -7,6 +8,7 @@ export function CreateAccount(){
     var emailAddress='';
     var password='';
     var userType=-1;
+    var phone='';
     
     return(
         <form>
@@ -17,11 +19,15 @@ export function CreateAccount(){
                 </div>
                 <p>Email Address:</p>
                 <div className="input">
-                    <input id = "create-email" type="text" onChange={event=>setUEmailAddress(event)}></input>
+                    <input type="text" onChange={event=>setUEmailAddress(event)}></input>
                 </div>
                 <p>Password:</p>
                 <div className="input">
-                    <input id = "create-password" type="text" onChange={event=>setPassword(event)}></input>
+                    <input type="text" onChange={event=>setPassword(event)}></input>
+                </div>
+                <p>Phone Number:</p>
+                <div className="input">
+                    <input type="text" onChange={event=>setPhone(event)}></input>
                 </div>
                 <p>User Type:</p>
                 <div className="input">
@@ -52,9 +58,12 @@ export function CreateAccount(){
         password=event.target.value;
     }
 
+    function setPhone(event){
+        phone=event.target.value;
+    }
+
     function setUserType(event){
         userType=event.target.value;
-        console.log(userType);
     }
 
     function submitMeeting(){
@@ -64,10 +73,12 @@ export function CreateAccount(){
             alert('Please enter an e-mail');
         }else if(password===''){
             alert('Please enter a passwaord');
+        }else if(password===''){
+            alert('Please enter a phone number');
         } else if(userType<0){
             alert('Please choose a user type');
         } else {
-            console.log(userType);
+            createAccount(userName,emailAddress,password,phone,userType);
             alert('Create Account Success!');
         }
     }
