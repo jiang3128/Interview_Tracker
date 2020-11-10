@@ -1,20 +1,19 @@
-#CreateMeeting{
+#CreateAccount{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 600px;
-    height: 550px;
+    height: 500px;
     justify-content: center;
 }
-#CreateMeeting>p{
+#CreateAccount>p{
     width: 600px;
     font-size: x-large;
     margin-top:20px;
 }
-.input{
+input{
     width: 300px;
-    margin-left:200px;
-    margin-right:100px;
+    height: 20px;
 }
 #submit-button{
     height: 50px;
