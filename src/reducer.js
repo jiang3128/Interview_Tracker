@@ -1,17 +1,16 @@
 import {Action} from './actions.js';
 
 const intialState={
-    currentPage:5,
+    currentPage:0,
     currentView:0,
     currentOption:0,
     meetings:[],
-    user:{
-        type:0
-    },
+    user:{},
     loginError:false,
     candidate:[],
     participant:[],
     location:[],
+    message:[],
 };         
 
 function reducer(state=intialState,action){
@@ -67,6 +66,11 @@ function reducer(state=intialState,action){
             return{
                 ...state,
                 location:action.payload,
+            };
+        case Action.loadMessage:
+            return{
+                ...state,
+                message:action.payload,
             };
         default:
             return state;

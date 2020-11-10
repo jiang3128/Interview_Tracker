@@ -2,7 +2,7 @@ import React from 'react';
 import './css/meeting-view.css';
 import close from './images/close.png';
 import {useDispatch, useSelector} from 'react-redux';
-import {changeOption, changeView} from './actions';
+import {changeOption, changeView, findMessage} from './actions';
 import {SingleUser} from './single-user.js';
 import {Message} from './message.js'
 
@@ -10,11 +10,13 @@ export function MeetingView(props) {
     var info = props.info;
     const dispatch = useDispatch();
     const option = useSelector(state => state.currentOption);
+    const messages = useSelector(state => state.message);
+
     return (
         <div className="overlay">
             <div className="button-bar">
                 <div className="buttons" onClick={() => optionChange(1)}>Feedback</div>
-                <div className="buttons" onClick={() => optionChange(2)}>Messages</div>
+                <div className="buttons" onClick={() => {optionChange(2);getMessage(info.mid)}}>Messages</div>
                 <div className="buttons" onClick={() => optionChange(3)}>People</div>
                 <div className="buttons" onClick={() => {window.print()}}>Print</div>
             </div>
@@ -33,7 +35,7 @@ export function MeetingView(props) {
                 <div className="tag-big">Location</div>
                 <div className="info-big">{info.city+'\n'+info.address}</div>
                 <div className="tag-big">Status</div>
-                <div className="info-big">{mapStatus(info.meetingStatus)}</div>
+                <div className="info-big">{mapStatus(info.status)}</div>
             </div>
             {option!==0&&<div className="option">
                 {option===1&&<div className="feedback">
@@ -44,11 +46,7 @@ export function MeetingView(props) {
                     <div className="chat-message">
                         <h3>Message</h3>
                         <div className="chat-body">
-                            <Message/>
-                            <Message/>
-                            <Message/>
-                            <Message/>
-                            <Message/>
+                            {messages.map(message=><Message key={message.m_id} message={message}/>)}
                         </div>
                     </div>
                     <textarea className="chat-input"></textarea>
@@ -83,7 +81,12 @@ export function MeetingView(props) {
     function closeView(){
         dispatch(changeView(0));
     }
+
     function optionChange(option){
         dispatch(changeOption(option));
+    }
+
+    function getMessage(id){
+        dispatch(findMessage(id));
     }
 }

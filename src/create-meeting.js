@@ -141,6 +141,8 @@ export function CreateMeeting(){
                     userList.push(participant3);
                 userList.push(candidate);
                 userList=userList.map(user=>{return{uid:parseInt(user)};});
+                start.setMinutes(start.getMinutes() - start.getTimezoneOffset());
+                end.setMinutes(end.getMinutes() - end.getTimezoneOffset());
                 createMeeting(userList,start.toJSON().substr(0, 19).replace(/T/,' '),
                 end.toJSON().substr(0, 19).replace(/T/,' '),parseInt(location));
                 alert('Create Meeting Success!');

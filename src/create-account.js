@@ -78,7 +78,7 @@ export function CreateAccount(){
         } else if(userType<0){
             alert('Please choose a user type');
         } else {
-            createAccount(userName,emailAddress,password,phone,userType);
+            createAccount(userName,emailAddress,password,phone,parseInt(userType));
             alert('Create Account Success!');
         }
     }

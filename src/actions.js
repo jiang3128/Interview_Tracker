@@ -9,6 +9,7 @@ export const Action=Object.freeze({
     loadCandidate:'loadCandidate',
     loadParticipant:'loadParticipant',
     loadLocation:'loadLocation',
+    loadMessage:'loadMessage',
 });
 
 function loadMeetings(meetings){
@@ -51,11 +52,11 @@ function loadLocation(location){
         payload:location,
     };
 }
-//get user types from the backend
-function loadUserType(userType){
+
+function loadMessage(message){
     return{
-        type:Action.loadUserType,
-        payload:userType,
+        type:Action.loadMessage,
+        payload:message,
     };
 }
 
@@ -193,6 +194,17 @@ export function findLocation(){
         .then(response=>response.json())
         .then(data=>{
             dispatch(loadLocation(data));
+        })
+        .catch(error=>console.log(error));
+    };
+}
+
+export function findMessage(id){
+    return dispatch=>{
+        fetch(`${host}/getMessage/${id}`)
+        .then(response=>response.json())
+        .then(data=>{
+            dispatch(loadMessage(data));
         })
         .catch(error=>console.log(error));
     };
