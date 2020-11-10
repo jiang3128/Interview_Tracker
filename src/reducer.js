@@ -1,11 +1,13 @@
 import {Action} from './actions.js';
 
 const intialState={
-    currentPage:5,
+    currentPage:1,
     currentView:0,
     currentOption:0,
     meetings:[],
-    user:{type:0},
+    user:{
+        uname: null
+    },
     loginError:false,
     candidate:[],
     participant:[],
