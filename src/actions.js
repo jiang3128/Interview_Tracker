@@ -9,7 +9,6 @@ export const Action=Object.freeze({
     loadCandidate:'loadCandidate',
     loadParticipant:'loadParticipant',
     loadLocation:'loadLocation',
-    loadUserType:'loadUserType',
 });
 
 function loadMeetings(meetings){
@@ -87,8 +86,8 @@ export function changePage(page){
     };
 }
 
-const host='http://138.68.20.45:8080';
-//const host='http://localhost:8080';
+//const host='http://138.68.20.45:8080';
+const host='http://localhost:8080';
 export function findAllMeetings(){
     return dispatch=>{
         fetch(`${host}/getAllMeetings`)
@@ -143,29 +142,26 @@ export function createMeeting(userList,startTime,endTime,lid){
     .catch(error=>console.log(error));
 }
 
-export function deleteMeeting(userList,startTime,endTime,lid){
-    var status=0;
-    var feedback=null;
-    const meeting={userList,startTime,endTime,lid,status,feedback};
+export function deleteMeeting(mid){
+    const meeting={mid};
     const options ={
         method: 'DELETE',
         body:JSON.stringify(meeting), 
     }
-    //deleteMeeting
     fetch(`${host}/deleteMeeting`, options)
     .catch(error=>console.log(error));
 }
-// create account - grab user Input and insert to our database
-export function createAccount(userName,emailAddress,userType){
-    const account={userName,emailAddress,userType}
+
+export function createAccount(uname,email,upassword,phoneNumber,type){
+    const user={uname,email,upassword,phoneNumber,type}
     const options ={
         method:'POST',
         headers:{
             'Content-Type': 'application/json',
         },
-        body:JSON.stringify(account),
+        body:JSON.stringify(user),
     }
-    fetch(`${host}/insertAccount`,options)
+    fetch(`${host}/insertUser`,options)
     .catch(error=>console.log(error));
 }
 
@@ -197,17 +193,6 @@ export function findLocation(){
         .then(response=>response.json())
         .then(data=>{
             dispatch(loadLocation(data));
-        })
-        .catch(error=>console.log(error));
-    };
-}
-//get user types from the backend
-export function findUserType(){
-    return dispatch=>{
-        fetch(`${host}/getUserType`)
-        .then(response=>response.json())
-        .then(data=>{
-            dispatch(loadUserType(data));
         })
         .catch(error=>console.log(error));
     };
