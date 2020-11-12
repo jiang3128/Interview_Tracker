@@ -26,8 +26,8 @@ function App() {
     <div id="meeting_tracker_root">
       <div className="Header_Info">
         <p>Welcome! {username}</p>
-        {(currentPage!==0)&&<div onClick={()=>logout()}>Logout</div>}
         {(currentPage!==0)&&<div onClick={() => {window.print()}}>Print</div>}
+        {(currentPage!==0)&&<div onClick={()=>logout()}>Logout</div>}
       </div>
       <SideBar/>
       <div id="main">

@@ -10,6 +10,7 @@ export const Action=Object.freeze({
     loadParticipant:'loadParticipant',
     loadLocation:'loadLocation',
     loadMessage:'loadMessage',
+    removeMeeting:'removeMeeting',
 });
 
 function loadMeetings(meetings){
@@ -57,6 +58,13 @@ function loadMessage(message){
     return{
         type:Action.loadMessage,
         payload:message,
+    };
+}
+
+function removeMeeting(id){
+    return{
+        type:Action.removeMeeting,
+        payload:id,
     };
 }
 
@@ -144,13 +152,19 @@ export function createMeeting(userList,startTime,endTime,lid){
 }
 
 export function deleteMeeting(mid){
-    const meeting={mid};
-    const options ={
-        method: 'DELETE',
-        body:JSON.stringify(meeting), 
-    }
-    fetch(`${host}/deleteMeeting`, options)
-    .catch(error=>console.log(error));
+    return dispatch=>{
+        const options ={
+            method: 'DELETE',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+        }
+        fetch(`${host}/deleteMeeting/${mid}`, options)
+        .then(()=>{
+            dispatch(removeMeeting(mid));
+        })
+        .catch(error=>console.log(error));
+    };
 }
 
 export function createAccount(uname,email,upassword,phoneNumber,type){

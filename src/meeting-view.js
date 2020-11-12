@@ -2,7 +2,7 @@ import React from 'react';
 import './css/meeting-view.css';
 import close from './images/close.png';
 import {useDispatch, useSelector} from 'react-redux';
-import {changeOption, changeView, findMessage} from './actions';
+import {changeOption, changeView, findMessage,deleteMeeting} from './actions';
 import {SingleUser} from './single-user.js';
 import {Message} from './message.js'
 
@@ -19,6 +19,7 @@ export function MeetingView(props) {
                 <div className="buttons" onClick={() => {optionChange(2);getMessage(info.mid)}}>Messages</div>
                 <div className="buttons" onClick={() => optionChange(3)}>People</div>
                 <div className="buttons" onClick={() => {window.print()}}>Print</div>
+                <div className="buttons" onClick={() => {deleteThis(info.mid)}}>Delete</div>
             </div>
             <div className="view">
                 <div className="close">
@@ -73,9 +74,6 @@ export function MeetingView(props) {
         else if(status===1){
             return 'End';
         }
-        else{
-            return 'Cancel';
-        }
     }
     
     function closeView(){
@@ -88,5 +86,10 @@ export function MeetingView(props) {
 
     function getMessage(id){
         dispatch(findMessage(id));
+    }
+
+    function deleteThis(id){
+        dispatch(deleteMeeting(id));
+        alert('Delete success');
     }
 }

@@ -41,6 +41,7 @@ function reducer(state=intialState,action){
                 ...state,
                 currentPage:0,
                 user:{},
+                currentOption:0,
             };
         case Action.changeOption:
             return{
@@ -71,6 +72,12 @@ function reducer(state=intialState,action){
             return{
                 ...state,
                 message:action.payload,
+            };
+        case Action.removeMeeting:
+            var temp=state.meetings.filter(meeting=>meeting.mid!==action.payload);
+            return{
+                ...state,
+                meetings:temp,
             };
         default:
             return state;

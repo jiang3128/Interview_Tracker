@@ -2,7 +2,7 @@ import React from 'react';
 import {MeetingView} from './meeting-view.js';
 import './css/meeting-tracker.css';
 import {useDispatch, useSelector} from 'react-redux';
-import {changeView,deleteMeeting} from './actions.js';
+import {changeView} from './actions.js';
 
 export function MeetingTracker(props){
     var info = props.info;
@@ -14,8 +14,6 @@ export function MeetingTracker(props){
                 <p>{parseTime(info.startTime)+'\xa0\xa0\xa0\xa0~\xa0\xa0\xa0\xa0'+parseTime(info.endTime)}</p>
                 <p>{info.address+', '+info.city}</p>
             </div>
-            {/* //delete Meeting */}
-            <div className ="delete-button" onClick={(deleteMeeting)}>&#x2716;</div>
             {currentView===info.mid&&<MeetingView key={info.mid} info={info}/>}
         </div>
         
@@ -24,11 +22,7 @@ export function MeetingTracker(props){
     function openView(id){
         dispatch(changeView(id));
     }
-    //delete
-    function deleteMeeting(){
-        dispatchEvent(deleteMeeting());
-    }
-   
+
     function parseTime(time){
         var result=time.substring(5,7)+'/'+time.substring(8,10)+'/'+time.substring(0,4)+'\xa0\xa0\xa0'+time.substring(11,19);
         return result;

@@ -19,13 +19,3 @@ p{
   margin:0px 0px 0px 10px;
   font-size: 20px;
 }
-.Container_Info > .delete-button{
-  position: absolute;
-  right:10%;
-  user-select: none;
-}
-.Container_Info > .delete-button:hover{
-  cursor: pointer;
-  transform: scale(1.5);
-  color: black;
-}
