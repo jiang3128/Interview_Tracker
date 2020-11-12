@@ -11,6 +11,7 @@ export function MeetingView(props) {
     const dispatch = useDispatch();
     const option = useSelector(state => state.currentOption);
     const messages = useSelector(state => state.message);
+    const type = useSelector(state => state.user.type);
 
     return (
         <div className="overlay">
@@ -19,7 +20,7 @@ export function MeetingView(props) {
                 <div className="buttons" onClick={() => {optionChange(2);getMessage(info.mid)}}>Messages</div>
                 <div className="buttons" onClick={() => optionChange(3)}>People</div>
                 <div className="buttons" onClick={() => {window.print()}}>Print</div>
-                <div className="buttons" onClick={() => {deleteThis(info.mid)}}>Delete</div>
+                {type<4&&<div className="buttons" onClick={() => {deleteThis(info.mid)}}>Delete</div>}
             </div>
             <div className="view">
                 <div className="close">
