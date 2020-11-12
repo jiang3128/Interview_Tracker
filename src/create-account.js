@@ -73,7 +73,7 @@ export function CreateAccount(){
             alert('Please enter an e-mail');
         }else if(password===''){
             alert('Please enter a passwaord');
-        }else if(password===''){
+        }else if(phone===''){
             alert('Please enter a phone number');
         } else if(userType<0){
             alert('Please choose a user type');
