@@ -79,6 +79,13 @@ function reducer(state=intialState,action){
                 ...state,
                 meetings:temp,
             };
+        case Action.insertMessage:
+            var message=state.message.slice(0);
+            message.push(action.payload);
+            return{
+                ...state,
+                message:message,
+            };
         default:
             return state;
     }

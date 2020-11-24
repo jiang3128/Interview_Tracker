@@ -11,6 +11,7 @@ export const Action=Object.freeze({
     loadLocation:'loadLocation',
     loadMessage:'loadMessage',
     removeMeeting:'removeMeeting',
+    insertMessage:'insertMessage',
 });
 
 function loadMeetings(meetings){
@@ -65,6 +66,13 @@ function removeMeeting(id){
     return{
         type:Action.removeMeeting,
         payload:id,
+    };
+}
+
+function insertMessage(message){
+    return{
+        type:Action.insertMessage,
+        payload:message,
     };
 }
 
@@ -219,6 +227,25 @@ export function findMessage(id){
         .then(response=>response.json())
         .then(data=>{
             dispatch(loadMessage(data));
+        })
+        .catch(error=>console.log(error));
+    };
+}
+
+export function addMessage(b_id,u_name,m_body,postTime){
+    return dispatch=>{
+        const message={b_id,u_name,m_body,postTime}
+        const options ={
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body:JSON.stringify(message),
+        }
+        fetch(`${host}/insertMessage`,options)
+        .then(response=>response.json())
+        .then(data=>{
+            dispatch(insertMessage(data));
         })
         .catch(error=>console.log(error));
     };

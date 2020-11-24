@@ -2,7 +2,7 @@ import React from 'react';
 import './css/meeting-view.css';
 import close from './images/close.png';
 import {useDispatch, useSelector} from 'react-redux';
-import {changeOption, changeView, findMessage,deleteMeeting} from './actions';
+import {changeOption, changeView, findMessage,deleteMeeting,addMessage} from './actions';
 import {SingleUser} from './single-user.js';
 import {Message} from './message.js'
 
@@ -12,6 +12,9 @@ export function MeetingView(props) {
     const option = useSelector(state => state.currentOption);
     const messages = useSelector(state => state.message);
     const type = useSelector(state => state.user.type);
+    const username = useSelector(state => state.user.uname);
+
+    var message='';
 
     return (
         <div className="overlay">
@@ -51,8 +54,8 @@ export function MeetingView(props) {
                             {messages.map(message=><Message key={message.m_id} message={message}/>)}
                         </div>
                     </div>
-                    <textarea className="chat-input"></textarea>
-                    <div className="chat-button">Send</div>
+                    <textarea className="chat-input" onChange={event=>message=event.target.value}></textarea>
+                    <div className="chat-button" onClick={()=>addNewMessage(message)}>Send</div>
                 </div>}
                 {option===3&&<div className="people">
                     <h3>People</h3>
@@ -92,5 +95,17 @@ export function MeetingView(props) {
     function deleteThis(id){
         dispatch(deleteMeeting(id));
         alert('Delete success');
+    }
+
+    function addNewMessage(message){
+        var time=new Date();
+        time.setMinutes(time.getMinutes() - time.getTimezoneOffset());
+        time=time.toJSON().substr(0, 19).replace(/T/,' ');
+        dispatch(addMessage(info.mid,username,message,time));
+        var x = document.getElementsByClassName("chat-input");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].value = "";
+        }
     }
 }
