@@ -12,6 +12,8 @@ export const Action=Object.freeze({
     loadMessage:'loadMessage',
     removeMeeting:'removeMeeting',
     insertMessage:'insertMessage',
+    insertFeedback:'insertFeedback',
+    changeFeedbackOption:'changeFeedbackOption',
 });
 
 function loadMeetings(meetings){
@@ -76,6 +78,13 @@ function insertMessage(message){
     };
 }
 
+function insertFeedback(feedback){
+    return{
+        type:Action.insertFeedback,
+        payload:feedback,
+    };
+}
+
 export function changeView(id){
     return{
         type:Action.changeView,
@@ -100,6 +109,13 @@ export function changePage(page){
     return{
         type:Action.changePage,
         payload:page,
+    };
+}
+
+export function changeFeedbackOption(option){
+    return{
+        type:Action.changeFeedbackOption,
+        payload:option,
     };
 }
 
@@ -234,7 +250,7 @@ export function findMessage(id){
 
 export function addMessage(b_id,u_name,m_body,postTime){
     return dispatch=>{
-        const message={b_id,u_name,m_body,postTime}
+        const message={b_id,u_name,m_body,postTime};
         const options ={
             method:'POST',
             headers:{
@@ -246,6 +262,24 @@ export function addMessage(b_id,u_name,m_body,postTime){
         .then(response=>response.json())
         .then(data=>{
             dispatch(insertMessage(data));
+        })
+        .catch(error=>console.log(error));
+    };
+}
+
+export function addFeedback(mid,feedback){
+    return dispatch=>{
+        const info={mid,feedback};
+        const options ={
+            method:'PUT',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body:JSON.stringify(info),
+        }
+        fetch(`${host}/addFeedback`,options)
+        .then(()=>{
+            dispatch(insertFeedback(info));
         })
         .catch(error=>console.log(error));
     };

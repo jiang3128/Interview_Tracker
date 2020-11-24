@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './css/app.css';
 import {MeetingTracker} from './meeting-tracker.js';
 import {SideBar} from './side-bar.js';
@@ -8,7 +8,7 @@ import {CreateAccount} from './create-account.js';
 import {MyFile} from './my-file.js';
 import {MyAccount} from './my-account.js';
 import {useDispatch, useSelector} from 'react-redux';
-import {findAllMeetings, userLogout} from './actions.js';
+import {userLogout} from './actions.js';
 
 const pages = ["", "My Meetings", "My Files", "My Account", "Create Meeting", "Create Account"];
 
@@ -17,10 +17,6 @@ function App() {
     const meetings = useSelector(state => state.meetings);
     const currentPage = useSelector(state => state.currentPage);
     const username = useSelector(state => state.user.uname);
-
-  useEffect(()=>{
-    dispatch(findAllMeetings());
-  },[dispatch]);
 
   return (
     <div id="meeting_tracker_root">

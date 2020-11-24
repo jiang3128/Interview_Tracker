@@ -2,7 +2,7 @@ import React from 'react';
 import './css/meeting-view.css';
 import close from './images/close.png';
 import {useDispatch, useSelector} from 'react-redux';
-import {changeOption, changeView, findMessage,deleteMeeting,addMessage} from './actions';
+import {changeOption, changeView, findMessage,deleteMeeting,addMessage,changeFeedbackOption,addFeedback} from './actions';
 import {SingleUser} from './single-user.js';
 import {Message} from './message.js'
 
@@ -13,8 +13,10 @@ export function MeetingView(props) {
     const messages = useSelector(state => state.message);
     const type = useSelector(state => state.user.type);
     const username = useSelector(state => state.user.uname);
+    const feedbackOption = useSelector(state => state.feedbackOption);
 
     var message='';
+    var feedback='';
 
     return (
         <div className="overlay">
@@ -44,8 +46,12 @@ export function MeetingView(props) {
             </div>
             {option!==0&&<div className="option">
                 {option===1&&<div className="feedback">
-                    <h3>Feedback</h3>
-                    <div>{info.feedback}</div>
+                    <div className="feedback_content">
+                        <h3>Feedback</h3>
+                        <textarea readOnly className="feedback_text" onChange={event=>feedback=event.target.value} defaultValue={info.feedback}></textarea>
+                    </div>
+                    {type<3&&feedbackOption===0&&<div className="option-button" onClick={()=>edit(0)}>Edit</div>}
+                    {type<3&&feedbackOption===1&&<div className="option-button" onClick={()=>edit(1)}>Submit</div>}
                 </div>}
                 {option===2&&<div className="chat">
                     <div className="chat-message">
@@ -55,7 +61,7 @@ export function MeetingView(props) {
                         </div>
                     </div>
                     <textarea className="chat-input" onChange={event=>message=event.target.value}></textarea>
-                    <div className="chat-button" onClick={()=>addNewMessage(message)}>Send</div>
+                    <div className="option-button" onClick={()=>addNewMessage(message)}>Send</div>
                 </div>}
                 {option===3&&<div className="people">
                     <h3>People</h3>
@@ -98,14 +104,47 @@ export function MeetingView(props) {
     }
 
     function addNewMessage(message){
-        var time=new Date();
-        time.setMinutes(time.getMinutes() - time.getTimezoneOffset());
-        time=time.toJSON().substr(0, 19).replace(/T/,' ');
-        dispatch(addMessage(info.mid,username,message,time));
-        var x = document.getElementsByClassName("chat-input");
-        var i;
-        for (i = 0; i < x.length; i++) {
-            x[i].value = "";
+        if(message!==''){
+            var time=new Date();
+            time.setMinutes(time.getMinutes() - time.getTimezoneOffset());
+            time=time.toJSON().substr(0, 19).replace(/T/,' ');
+            dispatch(addMessage(info.mid,username,message,time));
+            var x = document.getElementsByClassName("chat-input");
+            var i;
+            for (i = 0; i < x.length; i++) {
+                x[i].value = "";
+            }
         }
     }
+    
+    function startEdit(){
+        var x = document.getElementsByClassName("feedback_text");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].readOnly = false;
+            x[i].focus();
+        }
+    }
+
+    function finishEdit(){
+        var x = document.getElementsByClassName("feedback_text");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].readOnly = true;
+            x[i].style.cursor="defult";
+        }
+    }
+
+    function edit(option){
+        if(option===0){
+            startEdit();
+            dispatch(changeFeedbackOption(1));
+        }
+        else{
+            finishEdit();
+            dispatch(changeFeedbackOption(0));
+            dispatch(addFeedback(info.mid,feedback));
+        }
+    }
+
 }

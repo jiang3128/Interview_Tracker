@@ -11,6 +11,7 @@ const intialState={
     participant:[],
     location:[],
     message:[],
+    feedbackOption:0
 };         
 
 function reducer(state=intialState,action){
@@ -85,6 +86,22 @@ function reducer(state=intialState,action){
             return{
                 ...state,
                 message:message,
+            };
+        case Action.insertFeedback:
+            var meetings=state.meetings.map(meeting=>{
+                if(meeting.mid===action.payload.mid){
+                    meeting.feedback=action.payload.feedback;
+                }
+                return meeting;
+            });
+            return{
+                ...state,
+                meetings:meetings,
+            };
+        case Action.changeFeedbackOption:
+            return{
+                ...state,
+                feedbackOption:action.payload,
             };
         default:
             return state;
