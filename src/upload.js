@@ -1,3 +1,5 @@
+// Importation of all used library and functions
+// Currently not in use
 import axios from 'axios';
 
 import React,{Component} from 'react';

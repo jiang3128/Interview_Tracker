@@ -1,9 +1,11 @@
+// Importation of all used library and functions
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {createMeeting, findCandiate, findLocation, findParticipant} from './actions';
 import './css/create-meeting.css';
 
 export function CreateMeeting(){
+    // Constant Value Declaration
     const dispatch=useDispatch();
     const candidates=useSelector(state=>state.candidate);
     const participants=useSelector(state=>state.participant);
@@ -14,7 +16,7 @@ export function CreateMeeting(){
         dispatch(findParticipant());
         dispatch(findLocation());
     },[dispatch]);
-    
+    // Initial state declaration 
     var candidate=-1;
     var participant1=-1;
     var participant2=-1;
@@ -27,6 +29,7 @@ export function CreateMeeting(){
 
     return(
         <form>
+            {/* Ask for User input for creating a Meeting */}
             <div id = "CreateMeeting">
                 <p>Candidate:</p>
                 <div className="input">
@@ -75,43 +78,43 @@ export function CreateMeeting(){
             </div>
         </form>
     );
-    
+    // Send an event action on Candidate
     function setCandidate(event){
         candidate=event.target.value;
     }
-
+    // Send an event action on Participant
     function setParticipant1(event){
         participant1=event.target.value;
     }
-
+    // Send an event action on Participant
     function setParticipant2(event){
         participant2=event.target.value;
     }
-
+    // Send an event action on Participant
     function setParticipant3(event){
         participant3=event.target.value;
     }
-
+    // Send an event action on setting Location
     function setLocation(event){
         location=event.target.value;
     }
-
+    // Send an event action on setting the start Date 1
     function setStartDate(event){
         startDate=event.target.value;
     }
-
+    // Send an event action on setting the end Date 1 
     function setEndDate(event){
         endDate=event.target.value;
     }
-
+    // Send an event action on setting the start Date 2
     function setStartTime(event){
         startTime=event.target.value;
     }
-
+    // Send an event action on setting the start Date 2
     function setEndTime(event){
         endTime=event.target.value;
     }
-
+    // Validation Checks on user inputs
     function submitMeeting(){
         if(candidate<0){
             alert('Please choose a candidate.');

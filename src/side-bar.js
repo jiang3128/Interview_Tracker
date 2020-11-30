@@ -1,9 +1,10 @@
+// Importation of all used library and functions
 import React from 'react';
 import './css/side-bar.css';
 import logo from './images/logo.png'
 import {useDispatch, useSelector} from 'react-redux';
 import {changePage, findMeetingsByUserId} from './actions.js';
-
+// Setting the constant values and the buttons for each different credentials
 const myFiles={key:2,value:"My Files"};
 const myAccount={key:3,value:"My Account"};
 const createMeeting={key:4,value:"Create Meeting"};
@@ -12,7 +13,7 @@ const candidateButtons=[myFiles,myAccount];
 const participantButtons=[myAccount];
 const meetingCreatorButons=[createMeeting,myAccount];
 const adminButtons=[createMeeting,createAccount,myAccount];
-
+// After login, the user will see an user interface that fits there userType
 export function SideBar(){
     const userType=useSelector(state=>state.user.type);
     const id=useSelector(state=>state.user.uid);
@@ -30,6 +31,7 @@ export function SideBar(){
         </div>
     );
     function button(userType){
+        // Candidate
         if(userType===5)
             return(
             <div className="buttonBar">
@@ -37,6 +39,7 @@ export function SideBar(){
                 {candidateButtons.map(button=><div key={button.key} onClick={()=>skip(button.key)}>{button.value}</div>)}
             </div>
             );
+        // Participant
         else if(userType===4)
             return(
             <div className="buttonBar">
@@ -44,6 +47,7 @@ export function SideBar(){
                 {participantButtons.map(button=><div key={button.key} onClick={()=>skip(button.key)}>{button.value}</div>)}
             </div>
             );
+        // Meeting Creator
         else if(userType===3)
             return(
             <div className="buttonBar">
@@ -51,6 +55,7 @@ export function SideBar(){
                 {meetingCreatorButons.map(button=><div key={button.key} onClick={()=>skip(button.key)}>{button.value}</div>)}
             </div>
             );
+        // Admins
         else if(userType===2||userType===1||userType===0)
             return(
             <div className="buttonBar">
@@ -59,6 +64,7 @@ export function SideBar(){
             </div>
             );
     }
+    // Dispatch no buttons show
     function skip(page){
         dispatch(changePage(page));
     }

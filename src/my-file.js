@@ -1,6 +1,8 @@
+// Importation of all used library and functions
 import React from 'react';
 import './css/my-file.css';
-
+// Page to Upload a File
+// Currently in use without function
 export function MyFile(){
     return(
         <div classname>

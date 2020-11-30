@@ -1,9 +1,10 @@
+// Importation of all used library and functions
 import React from 'react';
 import './css/create-account.css';
 import {createAccount} from './actions.js';
 
 export function CreateAccount(){
-
+    // Initia state 
     var userName='';
     var emailAddress='';
     var password='';
@@ -12,6 +13,7 @@ export function CreateAccount(){
     
     return(
         <form>
+            {/* Ask for User input for creating an account */}
             <div id = "CreateAccount">
                 <p>User Name:</p>
                 <div className="input">
@@ -45,27 +47,27 @@ export function CreateAccount(){
             </div>
         </form>
     );
-
+    // Send an event action on User Name
     function setUserName(event){
         userName=event.target.value;
     }
-
+    // Send an event action on User Email Address
     function setUEmailAddress(event){
         emailAddress=event.target.value;
     }
-
+    // Send an event action on User Password
     function setPassword(event){
         password=event.target.value;
     }
-
+    // Send an event action on User Phone
     function setPhone(event){
         phone=event.target.value;
     }
-
+    // Send an event action on User Type
     function setUserType(event){
         userType=event.target.value;
     }
-
+    // Validation Checks on user inputs
     function submitMeeting(){
         if(userName===''){
             alert('Please enter a user name');
