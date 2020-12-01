@@ -1,5 +1,6 @@
 // Importation of all used library and functions
 import React from 'react';
+import emailjs from 'emailjs-com';
 import './css/create-account.css';
 import {createAccount} from './actions.js';
 
@@ -10,18 +11,29 @@ export function CreateAccount(){
     var password='';
     var userType=-1;
     var phone='';
+
+    function sendEmail(e) {
+        e.preventDefault();
     
+        emailjs.sendForm('gmail', 'sendEmail', e.target, 'user_IQSHnCiTLu4oEZtl4Cxes')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+        e.target.reset();
+    }
     return(
-        <form>
+        <form onSubmit ={sendEmail}>
             {/* Ask for User input for creating an account */}
             <div id = "CreateAccount">
                 <p>User Name:</p>
-                <div className="input">
-                    <input type = "text" onChange={event=>setUserName(event)}></input>
+                <div className="input"> 
+                    <input type = "text" onChange={event=>setUserName(event)} placeholder = "Name" name = "name"></input>
                 </div>
                 <p>Email Address:</p>
                 <div className="input">
-                    <input type="text" onChange={event=>setUEmailAddress(event)}></input>
+                    <input type="text" onChange={event=>setUEmailAddress(event)} name = "email"></input>
                 </div>
                 <p>Password:</p>
                 <div className="input">
@@ -43,7 +55,7 @@ export function CreateAccount(){
                         <option value={5}>Candidate</option>
                     </select>
                 </div>
-                <div id="submit-button" onClick = {()=>submitMeeting()}>Submit</div>
+                <div input type ="submit" id="submit-button" onClick = {()=>submitMeeting()} value="send Message">Submit</div>
             </div>
         </form>
     );
