@@ -24,22 +24,3 @@
     color: gold;
     transition: 0.3s;
 }
-
-.submitFile-button{
-    height: 40px;
-    line-height: 40px;
-    margin-left: 25px;
-    width: 150px;
-    text-align: center;
-    font-size: larger;  
-    border: darkblue solid 1px;
-    border-radius: 3px;
-    position: relative;
-    right: 150%;
-  }
-.submitFile-button:hover{
-    background-color: darkblue;
-    color: gold;
-    cursor: pointer;
-    transition: 0.3s;
-}

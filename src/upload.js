@@ -1,10 +1,8 @@
-// Importation of all used library and functions
-// Currently not in use
 import axios from 'axios';
 
 import React,{Component} from 'react';
 
-class Upload extends Component {
+class App extends Component {
 
     state = {
 
@@ -49,20 +47,12 @@ class Upload extends Component {
 
             return (
                 <div>
-                    <h2>File Details:</h2>
                     <p>File Name: {this.state.selectedFile.name}</p>
                     <p>File Type: {this.state.selectedFile.type}</p>
                     <p>
                         Last Modified:{" "}
                         {this.state.selectedFile.lastModifiedDate.toDateString()}
                     </p>
-                </div>
-            );
-        } else {
-            return (
-                <div>
-                    <br />
-                    <h4>Choose before Pressing the Upload button</h4>
                 </div>
             );
         }
@@ -84,4 +74,4 @@ class Upload extends Component {
     }
 }
 
-export default Upload;
+export default App;
