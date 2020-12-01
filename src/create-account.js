@@ -11,11 +11,13 @@ export function CreateAccount(){
     var password='';
     var userType=-1;
     var phone='';
-
+    const SERVICE_ID = 'gmail';
+    const TEMPLATE_ID = 'sendEmail';
+    const USER_ID = 'user_IQSHnCiTLu4oEZtl4Cxes';
     function sendEmail(e) {
         e.preventDefault();
     
-        emailjs.sendForm('gmail', 'sendEmail', e.target, 'user_IQSHnCiTLu4oEZtl4Cxes')
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
           .then((result) => {
               console.log(result.text);
           }, (error) => {
@@ -33,7 +35,7 @@ export function CreateAccount(){
                 </div>
                 <p>Email Address:</p>
                 <div className="input">
-                    <input type="text" onChange={event=>setUEmailAddress(event)} name = "email"></input>
+                    <input type="text" onChange={event=>setUEmailAddress(event)} name = "to_email"></input>
                 </div>
                 <p>Password:</p>
                 <div className="input">
