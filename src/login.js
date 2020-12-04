@@ -14,9 +14,9 @@ export function Login(){
                 <img src={logo} alt="Logo"/>
             </div>
             <p>E-mail:</p>
-            <input id="email" type="text"/>
+            <input id="email" type="text" placeholder="Enter your email"/>
             <p>Password:</p>
-            <input id="password" type="password"/>
+            <input id="password" type="password" placeholder="Enter your password"/>
             <div id="login-error">{loginError&&error()}</div>
             <div id="login-button" onClick={login}>Login</div>
         </div>

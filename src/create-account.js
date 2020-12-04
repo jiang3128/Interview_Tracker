@@ -35,15 +35,15 @@ export function CreateAccount(){
                 </div>
                 <p>Email Address:</p>
                 <div className="input">
-                    <input type="text" onChange={event=>setUEmailAddress(event)} name = "to_email"></input>
+                    <input type="text" onChange={event=>setUEmailAddress(event)} placeholder = "Email" name = "to_email"></input>
                 </div>
                 <p>Password:</p>
                 <div className="input">
-                    <input type="text" onChange={event=>setPassword(event)}></input>
+                    <input type="text" onChange={event=>setPassword(event)} placeholder = "Password"></input>
                 </div>
                 <p>Phone Number:</p>
                 <div className="input">
-                    <input type="text" onChange={event=>setPhone(event)}></input>
+                    <input type="text" onChange={event=>setPhone(event)} placeholder = "Phone Number"></input>
                 </div>
                 <p>User Type:</p>
                 <div className="input">
