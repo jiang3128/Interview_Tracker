@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import React,{Component} from 'react';
 
-class Upload extends Component {
+class App extends Component {
 
     state = {
 
@@ -20,7 +20,6 @@ class Upload extends Component {
 
     // On file upload (click the upload button)
     onFileUpload = () => {
-
         // Create an object of formData
         const formData = new FormData();
 
@@ -47,20 +46,12 @@ class Upload extends Component {
 
             return (
                 <div>
-                    <h2>File Details:</h2>
                     <p>File Name: {this.state.selectedFile.name}</p>
                     <p>File Type: {this.state.selectedFile.type}</p>
                     <p>
                         Last Modified:{" "}
                         {this.state.selectedFile.lastModifiedDate.toDateString()}
                     </p>
-                </div>
-            );
-        } else {
-            return (
-                <div>
-                    <br />
-                    <h4>Choose before Pressing the Upload button</h4>
                 </div>
             );
         }
@@ -82,4 +73,4 @@ class Upload extends Component {
     }
 }
 
-export default Upload;
+export default App;

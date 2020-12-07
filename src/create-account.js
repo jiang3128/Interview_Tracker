@@ -1,33 +1,49 @@
+// Importation of all used library and functions
 import React from 'react';
+import emailjs from 'emailjs-com';
 import './css/create-account.css';
 import {createAccount} from './actions.js';
 
 export function CreateAccount(){
-
+    // Initia state 
     var userName='';
     var emailAddress='';
     var password='';
     var userType=-1;
     var phone='';
+    const SERVICE_ID = 'gmail';
+    const TEMPLATE_ID = 'sendEmail';
+    const USER_ID = 'user_IQSHnCiTLu4oEZtl4Cxes';
+    function sendEmail(e) {
+        e.preventDefault();
     
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+        e.target.reset();
+    }
     return(
-        <form>
+        <form onSubmit ={sendEmail}>
+            {/* Ask for User input for creating an account */}
             <div id = "CreateAccount">
                 <p>User Name:</p>
-                <div className="input">
-                    <input type = "text" onChange={event=>setUserName(event)}></input>
+                <div className="input"> 
+                    <input type = "text" onChange={event=>setUserName(event)} placeholder = "Name" name = "name"></input>
                 </div>
                 <p>Email Address:</p>
                 <div className="input">
-                    <input type="text" onChange={event=>setUEmailAddress(event)}></input>
+                    <input type="text" onChange={event=>setUEmailAddress(event)} placeholder = "Email" name = "to_email"></input>
                 </div>
                 <p>Password:</p>
                 <div className="input">
-                    <input type="text" onChange={event=>setPassword(event)}></input>
+                    <input type="text" onChange={event=>setPassword(event)} placeholder = "Password"></input>
                 </div>
                 <p>Phone Number:</p>
                 <div className="input">
-                    <input type="text" onChange={event=>setPhone(event)}></input>
+                    <input type="text" onChange={event=>setPhone(event)} placeholder = "Phone Number"></input>
                 </div>
                 <p>User Type:</p>
                 <div className="input">
@@ -41,31 +57,31 @@ export function CreateAccount(){
                         <option value={5}>Candidate</option>
                     </select>
                 </div>
-                <div id="submit-button" onClick = {()=>submitMeeting()}>Submit</div>
+                <div input type ="submit" id="submit-button" onClick = {()=>submitMeeting()} value="send Message">Submit</div>
             </div>
         </form>
     );
-
+    // Send an event action on User Name
     function setUserName(event){
         userName=event.target.value;
     }
-
+    // Send an event action on User Email Address
     function setUEmailAddress(event){
         emailAddress=event.target.value;
     }
-
+    // Send an event action on User Password
     function setPassword(event){
         password=event.target.value;
     }
-
+    // Send an event action on User Phone
     function setPhone(event){
         phone=event.target.value;
     }
-
+    // Send an event action on User Type
     function setUserType(event){
         userType=event.target.value;
     }
-
+    // Validation Checks on user inputs
     function submitMeeting(){
         if(userName===''){
             alert('Please enter a user name');

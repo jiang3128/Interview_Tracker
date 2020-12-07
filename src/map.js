@@ -1,3 +1,5 @@
+// Importation of all used library and functions
+// This page is not in function yet.
 import React, { Component } from 'react';
 import isEmpty from 'lodash.isempty';
 
