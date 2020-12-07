@@ -15,10 +15,10 @@ export function CreateMeeting(){
         dispatch(findLocation());
     },[dispatch]);
     
-    var candidate=-1;
-    var participant1=-1;
-    var participant2=-1;
-    var participant3=-1;
+    var candidate="";
+    var participant1="";
+    var participant2="";
+    var participant3="";
     var location=-1;
     var startDate='';
     var endDate='';
@@ -31,27 +31,27 @@ export function CreateMeeting(){
                 <p>Candidate:</p>
                 <div className="input">
                     <select onChange={event=>setCandidate(event)}>
-                        <option value={-1}></option>
-                        {candidates.map(candidate=><option key={candidate.uid} value={candidate.uid}>{candidate.uname}</option>)}
+                        <option value={""}></option>
+                        {candidates.map(candidate=><option key={candidate.uid} value={candidate.uid+" "+candidate.email}>{candidate.uname}</option>)}
                     </select>
                 </div>
                 <p>Participant:</p>
                 <div className="input">
                     <select onChange={event=>setParticipant1(event)}>
-                        <option value={-1}></option>
-                        {participants.map(participant=><option key={participant.uid} value={participant.uid}>{participant.uname}</option>)}
+                        <option value={""}></option>
+                        {participants.map(participant=><option key={participant.uid} value={participant.uid+" "+participant.email}>{participant.uname}</option>)}
                     </select>
                 </div>
                 <div className="input">
                     <select onChange={event=>setParticipant2(event)}>
-                        <option value={-1}></option>
-                        {participants.map(participant=><option key={participant.uid} value={participant.uid}>{participant.uname}</option>)}
+                        <option value={""}></option>
+                        {participants.map(participant=><option key={participant.uid} value={participant.uid+" "+participant.email}>{participant.uname}</option>)}
                     </select>
                 </div>
                 <div className="input">
                     <select onChange={event=>setParticipant3(event)}>
-                        <option value={-1}></option>
-                        {participants.map(participant=><option key={participant.uid} value={participant.uid}>{participant.uname}</option>)}
+                        <option value={""}></option>
+                        {participants.map(participant=><option key={participant.uid} value={participant.uid+" "+participant.email}>{participant.uname}</option>)}
                     </select>
                 </div>
                 <p>Start Time:</p>
@@ -113,10 +113,10 @@ export function CreateMeeting(){
     }
 
     function submitMeeting(){
-        if(candidate<0){
+        if(candidate===""){
             alert('Please choose a candidate.');
         }
-        else if(participant1<0&&participant2<0&participant3<0){
+        else if(participant1===""&&participant2===""&participant3===""){
             alert('Please choose at least one participant.');
         }
         else if(location<0){
@@ -133,14 +133,20 @@ export function CreateMeeting(){
             }
             else{
                 var userList=[];
-                if(participant1>=0)
+                if(participant1!=="")
                     userList.push(participant1);
-                if(participant2>=0&&participant2!==participant1)
+                if(participant2!==""&&participant2!==participant1)
                     userList.push(participant2);
-                if(participant3>=0&&participant3!==participant1&&participant3!==participant2)
+                if(participant3!==""&&participant3!==participant1&&participant3!==participant2)
                     userList.push(participant3);
                 userList.push(candidate);
-                userList=userList.map(user=>{return{uid:parseInt(user)};});
+                userList=userList.map(user=>{
+                    var obj=user.split(" ");
+                    return {
+                        uid:parseInt(obj[0]),
+                        email:obj[1]
+                    };
+                });
                 start.setMinutes(start.getMinutes() - start.getTimezoneOffset());
                 end.setMinutes(end.getMinutes() - end.getTimezoneOffset());
                 createMeeting(userList,start.toJSON().substr(0, 19).replace(/T/,' '),
