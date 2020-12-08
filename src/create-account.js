@@ -43,7 +43,7 @@ export function CreateAccount(){
                         <option value={5}>Candidate</option>
                     </select>
                 </div>
-                <div input type ="submit" id="submit-button" onClick = {()=>submitMeeting()} value="send Message">Submit</div>
+                <div type ="submit" id="submit-button" onClick = {()=>submitMeeting()} value="send Message">Submit</div>
             </div>
         </form>
     );

@@ -7,7 +7,7 @@ import Upload from './upload';
 // Currently in use without function
 export function MyFile() {
     return (
-        <div classname>
+        <div>
             <div><Upload/></div>
             {/*<div className="tag-small5">Current File stored</div>*/}
             {/*<div className="info-small2">Myresume.txt</div>*/}
