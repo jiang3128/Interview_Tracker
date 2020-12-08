@@ -1,32 +1,18 @@
 // Importation of all used library and functions
 import React from 'react';
-import emailjs from 'emailjs-com';
 import './css/create-account.css';
 import {createAccount} from './actions.js';
 
 export function CreateAccount(){
-    // Initia state 
+    // Initial state 
     var userName='';
     var emailAddress='';
     var password='';
     var userType=-1;
     var phone='';
-    const SERVICE_ID = 'gmail';
-    const TEMPLATE_ID = 'sendEmail';
-    const USER_ID = 'user_IQSHnCiTLu4oEZtl4Cxes';
-    function sendEmail(e) {
-        e.preventDefault();
-    
-        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
-          .then((result) => {
-              console.log(result.text);
-          }, (error) => {
-              console.log(error.text);
-          });
-        e.target.reset();
-    }
+
     return(
-        <form onSubmit ={sendEmail}>
+        <form>
             {/* Ask for User input for creating an account */}
             <div id = "CreateAccount">
                 <p>User Name:</p>
